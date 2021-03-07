@@ -1,0 +1,45 @@
+<!-- Scripts -->
+{% raw %}
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+		if ($navbarBurgers.length > 0) {
+			$navbarBurgers.forEach( el => {
+				el.addEventListener('click', () => {
+					const target = el.dataset.target;
+					const $target = document.getElementById(target);
+					el.classList.toggle('is-active');
+					$target.classList.toggle('is-active');
+				});
+			});
+		}
+	});
+</script>
+<script src="https://arianebrandao.github.io/assets/js/lazysizes.min.js" async=""></script>
+{% endraw %}
+
+{% if page.title == "Home" %}
+	{% raw %}
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  		<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script>
+			function mOver() {
+			  document.getElementById("clientes-destaque").innerHTML = "Alguns clientes ;)";
+			}
+			function mOut() {
+			  document.getElementById("clientes-destaque").innerHTML = "Alguns clientes :)";
+			}
+			
+			$(document).ready(function(){
+				$('.autoplay').slick({
+				  slidesToShow: 4,
+				  slidesToScroll: 1,
+				  autoplay: true,
+				  autoplaySpeed: 2000,
+				  arrows: false,
+				});
+			});
+		</script>
+	{% endraw %}
+{% endif %}

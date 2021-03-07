@@ -1,0 +1,21 @@
+            <ul>
+              <li {% if page.title == "Home" %} class="is-active" {% endif %}><a href="{{ site.url }}/">Home</a></li>
+
+              {% if site.blog == true %}
+                <li {% if page.title == "Blog" %} class="is-active" {% endif %}><a href="{{ site.url }}/blog">Blog</a></li>
+              {% endif %}
+
+              {% if site.projects == true %}
+                <li {% if page.title == "Projetos" %} class="is-active" {% endif %}><a href="{{ site.url }}/projects">Projetos e Portfólio</a></li>
+              {% endif %}
+
+              {% if site.about == true %}
+                <li {% if page.title == "Sobre mim" %} class="is-active" {% endif %}><a href="{{ site.url }}/about">Sobre mim</a></li>
+              {% endif %}
+
+                <li {% if page.title == "Contato" %} class="is-active" {% endif %}><a href="{{ site.url }}/contact">Faça um orçamento!</a></li>
+
+              {% if site.resume == true %}
+                <li><a href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">Currículo</a></li>
+              {% endif %}
+            </ul>

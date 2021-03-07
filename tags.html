@@ -1,0 +1,112 @@
+---
+layout: page
+title: Tags
+---
+
+    <section class="hero is-arcoiris is-bold">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                <a href="{{ site.url }}/" class="navbar-item is-active">Home</a>
+                <a href="{{ site.url }}/blog" class="navbar-item">Blog</a>
+                <a href="{{ site.url }}/projects" class="navbar-item">Projetos e Portfólio</a>
+                <a href="{{ site.url }}/about" class="navbar-item">Sobre mim</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+  
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">{{ page.title }} usadas no site</h1>
+
+            <div class="site-tags">
+                {% assign tags_list = site.tags %}
+
+                {% if tags_list.first[0] == null %}
+                    {% for tag in tags_list %}
+                        <a href="#{{ tag | slugify }}"><span class="tag is-white is-rounded">{{ tag }}</span></a> &nbsp;
+                    {% endfor %}
+                {% else %}
+                    {% for tag in tags_list %}
+                        <a href="#{{ tag[0] | slugify }}"><span class="tag is-white is-rounded">{{ tag[0] }}</span></a> &nbsp;
+                    {% endfor %}
+                {% endif %}
+            
+                {% assign tags_list = nil %}
+            </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="container">
+        <div class="conteudo">
+            <div class="tags">
+                {% if page.image and page.headerImage %}
+                    <div class="center">
+                        <img class="title-image" src="{{ page.image }}" alt="{{ page.title }}">
+                    </div>
+                {% endif %}
+                <div class="column">
+                    
+                {% for tag in site.tags  %}
+                    {% if forloop.last == true %}
+                        <h3 class="title is-3" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h3>
+                        
+                        <div class="column">
+                            {% assign pages_list = tag[1] %}
+                            {% for post in pages_list reversed %}
+                                {% if post.title != null %}
+                                    {% if group == null or group == post.group %}
+                                    <h4 class="subtitle">
+                                        <a href="{{ site.url }}{{ post.url }}">
+                                            <span class="tag is-light">{{ post.date | date: "%d/%m/%Y" }}</span>
+                                            {{ post.title }}
+                                        </a>
+                                    </h4>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            {% assign pages_list = nil %}
+                            {% assign group = nil %}
+                        </div>
+                    {% else %}
+                        <h3 class="title is-3" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h3>
+                        
+                        <div class="column">
+                            {% assign pages_list = tag[1] %}
+                            {% for post in pages_list reversed %}
+                                {% if post.title != null %}
+                                    {% if group == null or group == post.group %}
+                                    <h4 class="subtitle">
+                                        <a href="{{ site.url }}{{ post.url }}">
+                                            <span class="tag is-light">{{ post.date | date: "%d/%m/%Y" }}</span>
+                                            {{ post.title }}
+                                        </a>
+                                    </h4>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            {% assign pages_list = nil %}
+                            {% assign group = nil %}
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>

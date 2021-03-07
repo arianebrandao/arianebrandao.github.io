@@ -1,0 +1,22 @@
+<!-- Scripts -->
+<script src="{{ site.url }}/assets/js/instafeed.min.js"></script>
+{% raw %}
+<script>
+	var userFeed = new Instafeed ({
+		get: 'user',
+		userId: '5592787236',
+		accessToken: '5592787236.1677ed0.854d6b4347f648979607758a872ce27a',
+		resolution: 'standard_resolution',
+		sortBy: 'most-recent',
+		limit: 4,
+		links: false,
+		template: '<a href="{{link}}" onclick="window.open(this.href); return false;" data-tooltip="{{caption}}" id="{{id}}">'+
+		'<img src="{{image}}" alt="{{caption}}" /></a>',
+
+		filter: function(image) {
+			return image.type === 'image' && image.tags.indexOf('aboutme') >= 0;
+		},
+	});
+	userFeed.run();
+</script>
+{% endraw %}

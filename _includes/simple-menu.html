@@ -1,0 +1,26 @@
+    <section class="hero is-success is-bold">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                {% include simple-nav.html %}
+              </div>
+            </div>
+            
+          </div>
+        </nav>
+      </div>
+  
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">{{ site.name }}</h1>
+            <h2 class="subtitle">{{ site.bio }}</h2>
+
+            {% include social-links.html %}
+        </div>
+      </div>
+
+    </section>

@@ -1,0 +1,16 @@
+                <a class="navbar-item" href="{{ site.url }}/">Home</a>
+                {% if site.blog == true %}
+                    <a class="navbar-item" href="{{ site.url }}/blog">Blog</a>
+                {% endif %}
+                
+                {% if site.projects == true %}
+                <a class="navbar-item" href="{{ site.url }}/projects">Projetos e Portfólio</a>
+                {% endif %}
+                
+                {% if site.about == true %}
+                <a class="navbar-item" href="{{ site.url }}/about">Sobre mim</a>
+                {% endif %}
+                
+                {% if site.resume == true %}
+                    <a class="navbar-item" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">Currículo</a>
+                {% endif %}

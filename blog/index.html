@@ -1,0 +1,41 @@
+---
+# blog page must be named index.html and in its own folder to support pagination
+# https://jekyllrb.com/docs/pagination/
+layout: home
+# comments: true
+title: Blog
+---
+
+<div class="container">
+	<div class="conteudo">
+	    <div class="blog-posts">
+	    	
+			{% if site.posts.size == 0 %}
+				<h3 class="title is-3 has-text-centered">Nada publicado até o momento.</h3>
+				
+				{% elsif site.paginate %}
+					<h3 class="title is-3 has-text-centered">Meus posts</h3>
+				
+					{% for post in paginator.posts %}
+						{% if post.category == 'blog' %}
+							{% if post.hidden != true %}
+								{% include blog-post.html %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				
+					{% include pagination.html%}
+				{% else %}
+					<h3 class="title is-3 has-text-centered">Meus posts</h3>
+					
+					{% for post in site.posts %}
+						{% if post.category == 'blog' %}
+							{% if post.hidden != true %}
+								{% include blog-post.html %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+			{% endif %}
+	    </div>
+	</div>
+</div>

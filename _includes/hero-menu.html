@@ -1,0 +1,37 @@
+    <section class="hero is-success is-bold">
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="center">
+                {% if site.about %}
+                    <a href="{{ site.url }}/about">
+                        <figure class="image center is-128x128">
+                          <img class="is-rounded center" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+                        </figure>
+                    </a>
+                {% else %}
+                    <span class="link">
+                        <figure class="image center is-128x128">
+                          <img class="is-rounded center" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+                        </figure>
+                    </span>
+                {% endif %}
+            </div>
+
+            <h1 class="title">{{ site.name }}</h1>
+            <h2 class="subtitle">{{ site.bio }}</h2>
+
+            {% include social-links.html %}
+
+        </div>
+      </div>
+
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+          <div class="container">
+            {% include nav.html %}
+          </div>
+        </nav>
+      </div>
+    </section>

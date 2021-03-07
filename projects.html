@@ -1,0 +1,23 @@
+---
+layout: home
+title: Projetos
+---
+<div class="container">
+    <div class="conteudo">
+        <div class="blog-posts">
+            <h3 class="title is-3 has-text-centered">Alguns dos meus últimos projetos</h3>
+            {% for post in site.posts %}
+                {% if post.projects %}
+                    <div class="post">
+                        <h4 class="subtitle">
+                            <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
+                                <span class="tag is-light">{{ post.date | date: "%d/%m/%Y" }}</span>
+                                {{ post.title }}
+                            </a>
+                        </h4>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="{{ site.bio }}">
+    <meta name="author" content="{{ site.name }}">
+
+    {% seo %}
+    
+    {% include favicon.html %}
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />
+
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/bulma.min.css"/>
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+
+    {% if page.title == "Home" %}
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    {% endif %}
+
+</head>
+<body>
+  {% assign showHeader = false %}
+  <!-- AQUI DEFINE AS PAGINAS QUE O HERO VAI APARECER -->
+  {% if page.title == "Home" or page.title == "Blog" or page.title == "Projetos" or page.title == "Sobre mim" or page.title == "Contato" %}
+    {% assign showHeader = true %}
+  {% endif %}
+
+  {% if showHeader == true %}
+    <section class="hero is-arcoiris is-bold">
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="center">
+                {% if site.about %}
+                    <a class="link" href="{{ site.url }}/about">
+                        <figure class="image center is-128x128">
+                          <img class="is-rounded center" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+                        </figure>
+                    </a>
+                {% else %}
+                    <span class="link">
+                        <figure class="image center is-128x128">
+                          <img class="is-rounded center" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+                        </figure>
+                    </span>
+                {% endif %}
+            </div>
+
+            <h1 class="title">{{ site.name }}</h1>
+            <h2 class="subtitle">{{ site.bio }}</h2>
+
+            {% include social-links.html %}
+
+        </div>
+      </div>
+
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+          <div class="container">
+            {% include nav.html %}
+          </div>
+        </nav>
+      </div>
+    </section>
+  {% endif %}
+
+    {{ content }}
+
+    {% include analytics-google.html %}
+
+    {% include scripts.html %}
+</body>
+</html>
