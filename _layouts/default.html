@@ -30,6 +30,7 @@ layout: compress
       <script src="https://www.google.com/recaptcha/api.js?render=6LeV-vAjAAAAAHQpoaPCEi4qBeNcR6Q1Dwv46OHj"></script>
     {% endif %}
 
+    {% include analytics-google.html %}
 </head>
 <body>
   {% assign showHeader = false %}
@@ -79,8 +80,6 @@ layout: compress
   {% endif %}
 
     {{ content }}
-
-    {% include analytics-google.html %}
 
     {% include scripts.html %}
 </body>
