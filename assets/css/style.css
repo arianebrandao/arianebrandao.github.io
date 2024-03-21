@@ -75,6 +75,7 @@
   font-weight: 600;
 }
 .hero-foot .tabs.is-boxed a:hover {
+  color: #3273dc;
   transition: 0.5s all;
 }
 
