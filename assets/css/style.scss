@@ -51,7 +51,7 @@ $principal: #fd005d !important;
 		margin: 0 10px;
 	} 
 }
-.is-arcoiris{
+.is-rainbow{
     //background: linear-gradient(140deg, #63E6FF 0%, #D9C8FF 30%, #E872FF 50%, #FF87E8 70%, #FFDCDF 100%);
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
@@ -61,18 +61,18 @@ $principal: #fd005d !important;
     }
 }
 
-.home-posts, .blog-posts, .sobre, .contato, .tags{
+.home-posts, .blog-posts, .about, .contact, .tags{
 	margin: 50px 0;
 }
 
 //HOME
-.home-posts, .blog-posts, .contato, .tags{
+.home-posts, .blog-posts, .contact, .tags{
     h4{
         font-size: 1.5rem;
     }
 }
 
-.cliente-logo{
+.customer-logo{
     margin-bottom: 20px;
     align-items: center;
     align-content: center;
@@ -94,8 +94,8 @@ $principal: #fd005d !important;
 }
 
 //ABOUT
-.sobre, .contato{
-    .sobre-texto{
+.about, .contact{
+    .about-text{
         font-size: 1.2rem;
     }
 }
@@ -109,7 +109,7 @@ $principal: #fd005d !important;
 }
 
 // POSTS
-.conteudo{
+.container-content{
     margin: 1rem 1rem 0 1rem;
 }
 .title-image{
