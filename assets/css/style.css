@@ -70,6 +70,14 @@
   font-size: 1.5rem;
 }
 
+.hero-foot .tabs a {
+  color: #ffffff;
+  font-weight: 600;
+}
+.hero-foot .tabs.is-boxed a:hover {
+  transition: 0.5s all;
+}
+
 .customer-logo {
   margin-bottom: 20px;
   align-items: center;

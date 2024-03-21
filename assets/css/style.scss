@@ -72,6 +72,16 @@ $principal: #fd005d !important;
     }
 }
 
+.hero-foot {
+    .tabs a {
+        color: #ffffff;
+        font-weight: 600;
+    }
+    .tabs.is-boxed a:hover {
+        transition: .5s all;
+    }
+}
+
 .customer-logo{
     margin-bottom: 20px;
     align-items: center;
