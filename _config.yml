@@ -1,6 +1,6 @@
 # main text of home
 name: Ariane Brandão
-bio: Desenvolvedora React front-end, gamer que ama seriados e vôlei.
+bio: Desenvolvedora front-end, cuja rotina inclui codificar, jogar videojogos e acariciar cachorros.
 
 # twitter summary info
 description: Um blog sobre programação e coisas relacionadas à tecnologia.
@@ -57,7 +57,7 @@ email: arii.brandao@gmail.com
 authors:
     arianebrandao:
         name: Ariane Brandão
-        bio: Graduada em Análise e Desenvolvimento de Sistemas, trabalho com desenvolvimento web e outras tecnologias desde 2010.
+        bio: Tecnóloga em Análise e Desenvolvimento de Sistemas. Desenvolvedora Next.js/React Front-end e apaixonada por tecnologia.
         external-image: false
         picture: assets/images/profile.jpg
         twitter: ariplaymad
