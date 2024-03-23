@@ -71,6 +71,9 @@ $principal: #fd005d !important;
 .home-posts, .blog-posts, .contact, .tags{
     h4{
         font-size: 1.5rem;
+        a:hover {
+            transition: .5s all;
+        }
     }
 }
 
