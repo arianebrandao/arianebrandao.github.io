@@ -8,7 +8,7 @@ layout: home
         <div class="about">
             <h3 class="title is-3 has-text-centered">Sobre mim</h3>
             <p class="about-text">
-                Em 2016 conclui o ensino superior em Análise e Desenvolvimento de Sistemas. Amo codar e atualmente estou estudando React/Next.js.
+                Amo codar e atualmente estou estudando React/Next.js. Em 2016 conclui o ensino superior em Análise e Desenvolvimento de Sistemas.
                 <br/><br/>
                 Em meu último emprego, trabalhei diariamente com diversas tecnologias, frameworks e CMS - React, HTML, css, javascript, PHP, laravel, mysql, SASS, hubspot, salesforce, git, wordpress e outros que não me lembro agora. Meu foco é front-end usando o framework Next.js.
                 <br/><br/>
