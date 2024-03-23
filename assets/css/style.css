@@ -53,7 +53,7 @@
   gap: 0 20px;
 }
 .social-links a span:hover {
-  color: #363636;
+  color: #363636 !important;
   transition: 0.5s all;
 }
 
@@ -190,9 +190,7 @@ img {
 p {
   line-height: 1.7;
   color: #666;
-  font-weight: 300;
   margin-bottom: 20px;
-  letter-spacing: 0.4px;
 }
 
 h1 {
@@ -245,7 +243,6 @@ ol {
 
 ul li, ol li {
   line-height: 2.4rem;
-  font-weight: 300;
 }
 
 li {

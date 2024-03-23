@@ -48,7 +48,7 @@ $principal: #fd005d !important;
     gap: 0 20px;
 	a{
 		span:hover {
-            color: #363636;
+            color: #363636!important;
             transition: .5s all;
         }
 	} 
@@ -194,9 +194,7 @@ img{
 p{
 	line-height: 1.7;
     color: #666;
-    font-weight: 300;
     margin-bottom: 20px;
-    letter-spacing: .4px;
 }
 
 h1{
@@ -232,10 +230,6 @@ h1, h2, h3, h4 {
 ul, menu, dir {
     display: block;
     list-style-type: disc;
-    //margin-block-start: 1em;
-    //margin-block-end: 1em;
-    //margin-inline-start: 0px;
-    //margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
 ol{
@@ -244,7 +238,6 @@ ol{
 }
 ul li, ol li {
     line-height: 2.4rem;
-    font-weight: 300;
 }
 li {
     display: list-item;
