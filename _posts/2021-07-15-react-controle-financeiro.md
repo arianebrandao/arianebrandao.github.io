@@ -1,5 +1,5 @@
 ---
-title: "[Portfólio React] Controle Financeiro - ab.money"
+title: "[Portfólio React] Controle Financeiro - dt.money"
 layout: post
 date: 2021-07-15 14:00
 tag:
@@ -12,7 +12,7 @@ image: https://arianebrandao.github.io/assets/images/posts/react-controle-financ
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
-description: "Portfólio React: Controle Financeiro - ab.money"
+description: "Portfólio React: Controle Financeiro - dt.money"
 category: project
 author: arianebrandao
 externalLink: false
