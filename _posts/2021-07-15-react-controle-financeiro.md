@@ -8,7 +8,7 @@ tag:
 - react
 - typescript
 - mirage js
-image: https://arianebrandao.github.io/assets/images/posts/react-controle-financeiro/1.png
+image: https://arianebrandao.github.io/assets/images/posts/react-controle-financeiro/logo.svg
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
@@ -26,9 +26,11 @@ Esse foi um dos primeiros apps que desenvolvi na minha jornada para aprender Rea
 ### Aprendizados
 
 Apliquei conceitos do React, como: componentes (suas propriedades e estados) e imutabilidade.
+
 Também aprendi a simular uma API utilizando o MirageJS e consumir a API com Axios. Pratiquei typescript, componentização, useEffect e contextos do React.
 
 Desafio sobre conceitos do React: <https://github.com/arianebrandao/reactjs-desafio-conceitos-react>
+
 Desafio sobre componentização: <https://github.com/arianebrandao/reactjs-desafio-componentizando-aplicacao>
 
 ### Sobre o app
