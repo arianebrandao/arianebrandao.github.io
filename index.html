@@ -8,42 +8,44 @@ title: Home
             <h3 class="title is-3 has-text-centered">Trabalhos e posts recentes</h3>
 
             {% for post in site.posts limit:5 %}
-                <div class="post">
-                    <h4 class="subtitle">
-                        {% if post.projects %} <span class='tag is-danger'>projetos</span> {% else %} <span class='tag is-info'>blog</span> {% endif %}
-                        <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
-                            {{ post.title }}
-                        </a>
-                    </h4>
-                </div>
+            <div class="post">
+                <h4 class="subtitle">
+                    {% if post.projects %} <span class='tag is-danger'>projetos</span> {% else %} <span
+                        class='tag is-info'>blog</span> {% endif %}
+                    <a
+                        href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
+                        {{ post.title }}
+                    </a>
+                </h4>
+            </div>
             {% endfor %}
 
-                <h3 class="title is-3 has-text-centered" id="highlighted-customers">Alguns clientes :)</h3>
-            
-                <div class="columns">
-                    <div class="column"></div>
-                    <div class="column is-8">
-                        <div class="autoplay customer-logo">
-                            <div>
-                                <a rel="nofollow" href="https://revistabicicleta.com" onclick="window.open(this.href); return false;">
-                                    <img onmouseover="mOver()" onmouseout="mOut()" alt="Revista Bicicleta" data-src="{{ site.url }}/assets/images/clientes/revista-bicicleta.png" class="lazyload" />
-                                </a>
-                            </div>
-                            <div>
-                                <a rel="nofollow" href="https://www.labbiolabormed.com.br" onclick="window.open(this.href); return false;">
-                                    <img onmouseover="mOver()" onmouseout="mOut()" alt="LabBiolabor Med" data-src="{{ site.url }}/assets/images/clientes/labbiolabormed.png" class="lazyload" />
-                                </a>
-                            </div>
-                            <div>
-                                <a rel="nofollow" href="https://hydrowheel.com.br" onclick="window.open(this.href); return false;">
-                                    <img onmouseover="mOver()" onmouseout="mOut()" alt="HydroWheel" data-src="{{ site.url }}/assets/images/clientes/hydrowheel.png" class="lazyload" />
-                                </a>
-                            </div>
+            <h3 class="title is-3 has-text-centered" id="highlighted-customers">Alguns clientes :)</h3>
+
+            <div class="columns">
+                <div class="column"></div>
+                <div class="column is-8">
+                    <div class="autoplay customer-logo">
+                        <div>
+                            <a rel="nofollow" href="https://revistabicicleta.com"
+                                onclick="window.open(this.href); return false;">
+                                <img onmouseover="mOver()" onmouseout="mOut()" alt="Revista Bicicleta"
+                                    data-src="{{ site.url }}/assets/images/clientes/revista-bicicleta.png"
+                                    class="lazyload" />
+                            </a>
+                        </div>
+                        <div>
+                            <a rel="nofollow" href="https://hydrowheel.com.br"
+                                onclick="window.open(this.href); return false;">
+                                <img onmouseover="mOver()" onmouseout="mOut()" alt="HydroWheel"
+                                    data-src="{{ site.url }}/assets/images/clientes/hydrowheel.png" class="lazyload" />
+                            </a>
                         </div>
                     </div>
-                    <div class="column"></div>
                 </div>
-            
+                <div class="column"></div>
+            </div>
+
         </div>
     </div>
 </div>
