@@ -13,9 +13,9 @@ description: Como instalar o LineageOS no UMIDIGI Power 3
 
 ---
 
-Meu celular antigo (UMIDIGI Power 3 com Android 10) estava parado e resolvi transformá-lo em um servidor de arquivos aqui para minha casa (tema para um próximo post). Para isso, precisei fazer o [root no aparelho e desbloquear o bootloader](https://arianebrandao.github.io/bootloader-unlocker-root-umidigi-power-3/). O segundo passo foi instalar o **LineageOS**, pois é muito mais leve e otimizado que a ROM stock do meu celular. Vou registrar aqui os passos que segui para realizar os procedimentos, que podem servir de base para outros procedimentos em outros aparelhos.
-
 ## Como instalar o LineageOS no UMIDIGI Power 3
+
+Meu celular antigo (UMIDIGI Power 3 com Android 10) estava parado e resolvi transformá-lo em um servidor de arquivos aqui para minha casa (tema para um próximo post). Para isso, precisei fazer o [root no aparelho e desbloquear o bootloader](https://arianebrandao.github.io/bootloader-unlocker-root-umidigi-power-3/). O segundo passo foi instalar o **LineageOS**, pois é muito mais leve e otimizado que a ROM stock do meu celular. Vou registrar aqui os passos que segui para realizar os procedimentos, que podem servir de base para outros procedimentos em outros aparelhos.
 
 Não encontrei uma versão "oficial" do LineageOS feita especificamente para o meu modelo. Mas, como o aparelho saiu com Android 10, ele suporta GSI (Generic System Image). Isso significa que é possível instalar uma versão genérica do LineageOS que funciona em qualquer aparelho com "Project Treble".
 
