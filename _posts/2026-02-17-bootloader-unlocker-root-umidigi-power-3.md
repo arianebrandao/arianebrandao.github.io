@@ -33,16 +33,16 @@ Antes de começar, você precisará de:
 
 **Faça o download dentro de uma pasta de fácil acesso, no meu caso, ela vai se chamar `umidigi`**.
 
-1. Driver USB do Google: https://developer.android.com/studio/run/win-usb?hl=pt-br - Faça o download do arquivo ZIP do driver USB do Google.
-2. SDK Plataform Tools (o famoso ADB e Fastboot): https://developer.android.com/tools/releases/platform-tools?hl=pt-br - Faça o download do SDK Platform-Tools para Windows
+1. Driver USB do Google: <https://developer.android.com/studio/run/win-usb?hl=pt-br> - Faça o download do arquivo ZIP do driver USB do Google.
+2. SDK Plataform Tools (o famoso ADB e Fastboot): <https://developer.android.com/tools/releases/platform-tools?hl=pt-br> - Faça o download do SDK Platform-Tools para Windows
 3. Donwload do Firmware Original que está instalado no seu celular (verifique em Configurações > Sobre o telefone > Número da versão).
-    - Para o UMIDIGI Power 3, eu não encontrei a versão exata do firmware que estava instalado no meu celular. Então eu atualizei a firmware para a versão mais recente disponível no fórum da UMIDIGI (https://community.umidigi.com/forum.php?mod=viewthread&tid=19231&extra=page%3D1).
+    - Para o UMIDIGI Power 3, eu não encontrei a versão exata do firmware que estava instalado no meu celular. Então eu atualizei a firmware para a versão mais recente disponível no fórum da UMIDIGI (<https://community.umidigi.com/forum.php?mod=viewthread&tid=19231&extra=page%3D1>).
 
     - Celulares UMIDIGI usam a ferramenta SP Flash Tool para instalação/atualização de firmware. Eu segui os tutoriais abaixo:
-        https://community.umidigi.com/forum.php?mod=viewthread&tid=16931
-        https://www.youtube.com/watch?v=-QOYdIWJEVw
+        <https://community.umidigi.com/forum.php?mod=viewthread&tid=16931>
+        <https://www.youtube.com/watch?v=-QOYdIWJEVw>
 
-4. Baixe o Magisk Manager APK: https://github.com/topjohnwu/Magisk/releases
+4. Baixe o Magisk Manager APK: <https://github.com/topjohnwu/Magisk/releases>
 
 Ao final, temos essa estrutura de pastas e arquivos:
 ```

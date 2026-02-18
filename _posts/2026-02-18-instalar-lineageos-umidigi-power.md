@@ -43,8 +43,8 @@ Para baixar o LineageOS correto, você precisa saber qual tipo de imagem o seu c
 
 **Faça o download dentro de uma pasta de fácil acesso, no meu caso, ela vai se chamar `umidigi`**.
 
-1. Driver USB do Google: https://developer.android.com/studio/run/win-usb?hl=pt-br - Faça o download do arquivo ZIP do driver USB do Google.
-2. SDK Plataform Tools (o famoso ADB e Fastboot): https://developer.android.com/tools/releases/platform-tools?hl=pt-br - Faça o download do SDK Platform-Tools para Windows
+1. Driver USB do Google: <https://developer.android.com/studio/run/win-usb?hl=pt-br> - Faça o download do arquivo ZIP do driver USB do Google.
+2. SDK Plataform Tools (o famoso ADB e Fastboot): <https://developer.android.com/tools/releases/platform-tools?hl=pt-br> - Faça o download do SDK Platform-Tools para Windows
 
 Ao final, temos essa estrutura de pastas e arquivos:
 ```
