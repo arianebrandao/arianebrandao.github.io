@@ -23,7 +23,7 @@ Meu celular antigo (UMIDIGI Power 3 com Android 10) estava parado e resolvi tran
 
 Antes de começar, você precisará de:
 1. Backup: Salve suas fotos, contatos e arquivos (você vai perder tudo).
-2. Computador: Com os drivers ADB e Fastboot instalados.
+2. Computador: Com os drivers USB do Google, SDK Plataform Tools (ADB e Fastboot) instalados.
 3. Firmware Original: Você precisa baixar o arquivo boot.img e o vbmeta.img exatamente da mesma versão do sistema que está instalada no seu celular hoje (verifique em Configurações > Sobre o telefone > Número da versão).
 4. Cabo USB: Preferencialmente o original.
 
