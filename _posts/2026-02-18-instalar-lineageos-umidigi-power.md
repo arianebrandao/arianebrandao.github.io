@@ -25,7 +25,8 @@ Antes de começar, você precisará de:
 1. Backup: Salve suas fotos, contatos e arquivos (você vai perder tudo).
 2. Computador: Com os drivers USB do Google, SDK Plataform Tools (ADB e Fastboot) instalados.
 3. Imagem do LineageOS compatível com seu dispositivo.
-4. Cabo USB: Preferencialmente o original.
+4. Arquivo `vbmeta.img` da firmware original do seu celular.
+5. Cabo USB: Preferencialmente o original.
 
 ### A imagem do LineageOS
 
@@ -34,7 +35,7 @@ Para baixar o LineageOS correto, você precisa saber qual tipo de imagem o seu c
 1. Baixe  e instale o app Treble Check (Informações sobre o Treble, em português) no celular.
 2. Abra o aplicativo e verifique se ele mostra a mensagem "Generic System Image found!". Isso quer dizer que ele é compatível com GSI (Generic System Image).
     > Logo abaixo dessa mensagem, vai ter algo parecido com "The type of image required is: **system-arm64-ab.img.xz**".
-3. Clique no botão "Pesquisar imagens" e escolha a imagem e versão de android que você deseja instalar. No meu caso, eu escolhi a versão mais recente do **LineageOS 21 (Android 14)**.
+3. Clique no botão "Pesquisar imagens" (leva para essa url <https://github.com/AndyYan/Android-GSI>) e escolha a imagem e versão de android que você deseja instalar. No meu caso, eu escolhi a versão **LineageOS 21 (Android 14)**.
 4. Na página de download da imagem, geralmente no site **SourceForge**, procure pelo arquivo que corresponde ao tipo de imagem que o seu celular aceita. No meu caso, baixei a imagem **"lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz"** [desse projeto](https://sourceforge.net/projects/andyyan-gsi/).
 
 ### Faça o download do restante dos arquivos que iremos usar
@@ -51,7 +52,8 @@ Ao final, temos essa estrutura de pastas e arquivos:
 📂umidigi
  ┣ 📦 usb_driver_r13-windows.zip          // Driver USB do Google
  ┣ 📦 platform-tools-latest-windows.zip   // SDK Plataform Tools
- ┗ 📦 lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz    // Imagem do LineageOS
+ ┣ 📦 lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz    // Imagem do LineageOS
+ ┗ 📦 vbmeta.img                          // Arquivo vbmeta.img da firmware original do seu celular
 ```
 
 ### Organizar os arquivos no computador
@@ -61,6 +63,7 @@ Agora que já baixamos tudo que iremos utilizar, vamos organizar os arquivos no 
 1. Extraia o arquivo `usb_driver_r13-windows.zip` (Driver USB do Google), entre na pasta e procure o arquivo `android_winusb`, clique com o botão direito->instalar. Uma vez instalado, pode deletar essa pasta.
 2. Extraia o arquivo `lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz` (Imagem do LineageOS) para uma pasta chamada `firmware`, dentro da pasta `umidigi`.
 3. Extraia todo o conteúdo do arquivo `platform-tools-latest-windows.zip` (SDK Plataform Tools) para dentro da pasta `firmware`, criada anteriormente.
+4. Mova o arquivo `vbmeta.img` da firmware original do seu celular para dentro da pasta `firmware`, criada anteriormente.
 
 A estrutura de pastas e arquivos final essa, com o arquivo extraído da firmware e plataforma tools juntos e misturados:
 ```
@@ -70,7 +73,8 @@ A estrutura de pastas e arquivos final essa, com o arquivo extraído da firmware
  ┣ 📦 lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz   // Imagem do LineageOS
  ┗ 📂 firmware                            // Pasta de firmware com os arquivos extraídos do LineageOS e plataforma tools juntos e misturados
    ┣ 📄 lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img    // Imagem do LineageOS extraída
-   ┗ 📄 arquivos de platform-tools [...]
+   ┣ 📄 arquivos de platform-tools [...]
+   ┗ 📄 vbmeta.img                          // Arquivo vbmeta.img da firmware original do seu celular
 ```
 
 ### Configurações do celular (se você já tem o root, pode pular essa parte)
@@ -89,7 +93,16 @@ No Android 10, para mexer na partição de sistema, você precisa entrar no Fast
 2. Navegue até a pasta `firmware`. Use o comando `cd [caminho da pasta firmware]`.
 3. Conecte o celular ao PC via cabo USB.
 4. Digite o comando `adb devices` para verificar se o celular está conectado (deve aparecer em List of devices attached).
-5. Digite o comando `adb reboot fastboot`. O celular vai reiniciar em uma tela que diz "Fastbootd" no topo (geralmente tem um menu azul/roxo).
+5. Digite o comando `adb reboot bootloader`. O celular vai reniciar em uma tela preta, escrito **FASTBOOT mode...**
+6. Vamos usar esse comando que é muito importante, para evitar loop infitino ao ligar o celular:
+    ```
+    fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
+    ```
+    > Se esse comando for inválido, digite o comando sem as flags:
+    ```
+    fastboot flash vbmeta vbmeta.img
+    ```
+7. Agora podemos entrar no modo Fastbootd com o comando `adb reboot fastboot` ou `fastboot reboot fastboot`. O celular vai reiniciar em uma tela que diz "Fastbootd" no topo (geralmente tem um menu azul/roxo).
 
 ### Instalar o LineageOS
 
@@ -108,6 +121,7 @@ Na tela do Fastbootd, digite os seguintes comandos:
     ```
     fastboot -w
     ```
+    > Esse processo pode levar vários minutos, não interrompa.
 4. Reiniciar:
     ```
     fastboot reboot
