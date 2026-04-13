@@ -37,11 +37,11 @@ disqus:
 # if you don't have any of social below, comment the line
 workana: 8575d19a58c4221d2ae6e45cae16d6e2
 # facebook: ariplaymad
-twitter: ariplaymad
+# twitter: ariplaymad
 # google: mygoogle
 # instagram: arianebranda0
 # pinterest: mypinterest
-linkedin: ariane-brand%C3%A3o
+linkedin: ariane-brandao
 # youtube: myyoutube
 # spotify: myspotify
 github: arianebrandao
@@ -55,12 +55,12 @@ github: arianebrandao
 email: arii.brandao@gmail.com
 
 authors:
-    arianebrandao:
-        name: Ariane Brandão
-        bio: Tecnóloga em Análise e Desenvolvimento de Sistemas. Desenvolvedora Next.js/React Front-end e apaixonada por tecnologia.
-        external-image: false
-        picture: assets/images/profile.jpg
-        twitter: ariplaymad
+  arianebrandao:
+    name: Ariane Brandão
+    bio: Tecnóloga em Análise e Desenvolvimento de Sistemas. Desenvolvedora Next.js/React Front-end e apaixonada por tecnologia.
+    external-image: false
+    picture: assets/images/profile.jpg
+    #twitter: ariplaymad
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
@@ -108,4 +108,4 @@ plugins:
   - jekyll-admin
 
 jekyll-mentions:
-    base_url: https://github.com
+  base_url: https://github.com
