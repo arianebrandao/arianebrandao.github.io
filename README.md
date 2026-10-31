@@ -13,11 +13,11 @@ O site está no ar no link: [arianebrandao.github.io](https://arianebrandao.gith
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Jekyll](https://jekyllrb.com) - Jekyll é um gerador de site/blog estático
-- [Travis CI](https://www.travis-ci.com/) - Cria ambiente para fazer deploy automático do Jekyll no Github Pages
+- [GitHub Actions](https://github.com/features/actions) - CI: valida o build e os links do site a cada push/PR (o deploy é feito pelo GitHub Pages)
 - [Git](https://git-scm.com/) - Controle de versionamento de códigos
 - [Bulma](https://bulma.io) - Framework de CSS
 - Javascript
 
 ## Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

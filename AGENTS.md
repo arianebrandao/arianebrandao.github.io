@@ -13,10 +13,12 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 | Install Ruby dependencies | `bundle install` |
 | Dev server | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000 |
 | Build | `bundle exec jekyll build` (output to `_site/`) |
-| Validate links/images | `bundle exec htmlproofer ./_site --only-4xx` (aliases: `npm test`, `rake test`) |
+| Validate links | `bundle exec htmlproofer ./_site --only-4xx --checks Links,Scripts --no-enforce-https --ignore-status-codes 403 --ignore-urls '/\/pages\/arianebrandao/,/drive\.google\.com\/open\?id=1UUmS1cI/'` (aliases: `npm test`, `rake test`) |
 | Scaffold a new post | `./initpost.sh -c "Post Title"` |
 
 Npm scripts (`npm run build`, `npm test`) exist in `package.json` but only wrap the Bundler/Jekyll commands above.
+
+The htmlproofer flags match CI: the Images check is skipped (lazyload images use `data-src`, no `src`), bot-wall 403s are ignored, and the `pages/arianebrandao` URLs are ignored — `jekyll-github-metadata` emits those in canonical tags when building locally without `JEKYLL_GITHUB_TOKEN` (CI passes the Actions `GITHUB_TOKEN`, so its builds resolve correctly). The `drive.google.com/open?id=1UUmS1cI...` ignore is a known-dead link in the Warframe post, pending a replacement.
 
 ## Repository Structure
 
@@ -27,7 +29,7 @@ Npm scripts (`npm run build`, `npm test`) exist in `package.json` but only wrap 
 - `_includes/` — reusable partials (nav, footer, social links, analytics, Disqus, etc.).
 - `assets/` — `css/` (Bulma is **vendored** as `bulma.min.css` plus `style.scss`), `js/` (`lazysizes.min.js`, `instafeed.min.js`), `images/` (post images under `assets/images/posts/<name>/`).
 - Top-level pages: `index.html`, `about.md`, `contact.html`, `projects.html`, `blog/`, `tags.html`, `404.html`, `notallowed.html`.
-- `.travis.yml` + `travis.sh` — CI pipeline (see Deployment).
+- `.github/workflows/ci.yml` — CI pipeline (see CI & Deployment).
 - `initpost.sh` — post scaffolding script.
 
 ## Content Conventions
@@ -78,7 +80,7 @@ comments: true
 
 ## CI & Deployment
 
-`.travis.yml` (Ruby 2.2.5) runs `./travis.sh` on push to the `gh-pages` or `next` branches: `bundle exec jekyll build` followed by `bundle exec htmlproofer ./_site --only-4xx`. The built site is served by GitHub Pages. Broken links (HTTP 4xx) fail CI — verify any external/edited URLs in posts.
+`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `bundle install` (Ruby 3.2, gems cached via `bundler-cache`), `bundle exec jekyll build` (`JEKYLL_ENV=production` + `JEKYLL_GITHUB_TOKEN`), then `bundle exec htmlproofer` with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. Broken links (HTTP 4xx) fail CI — verify any external/edited URLs in posts.
 
 ## Gotchas
 
