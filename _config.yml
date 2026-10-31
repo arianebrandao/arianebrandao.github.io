@@ -18,6 +18,7 @@ resume-url: https://google.com/?q=my+resume
 
 url: https://arianebrandao.github.io
 # your url: http://USERNAME.github.io
+repository: arianebrandao/arianebrandao.github.io
 
 permalink: /:title/
 
@@ -99,6 +100,17 @@ animation: true
 
 # Encoding
 encoding: utf-8
+
+exclude:
+  - AGENTS.md
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - gulpfile.js
+  - initpost.sh
 
 plugins:
   - jekyll-seo-tag
