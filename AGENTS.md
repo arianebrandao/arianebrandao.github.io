@@ -89,3 +89,11 @@ comments: true
 - Changes to `_config.yml` require restarting the dev server; most other files hot-reload.
 - The `github-pages` gem pins the Jekyll/plugin versions — prefer plugins already listed in `_config.yml`.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — see `.agents/rules/conventional-commits.md` for the allowed types, scopes, and format (e.g. `docs: update about me`).
+
+## Learning Loop
+
+At the end of a significant task (multi-step work, a new workflow, or anything that required non-obvious setup discovered by trial and error), pause and review the process before finishing:
+
+- If a step was repetitive, error-prone, or had non-obvious reasoning (environment quirks, flags whose purpose is not self-evident), propose capturing it: update this AGENTS.md, or create/update a skill in `.agents/skills/` (one capability per skill; use the `skill-writer` skill to author it). This prevents the next session from rediscovering the same pitfalls.
+- Always ask the user before creating or updating these files.
+- Example: the container-based local validation workflow was captured this way as the `validate-site` skill.
