@@ -8,13 +8,13 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 
 ## Commands
 
-| Purpose | Command |
-| --- | --- |
-| Install Ruby dependencies | `bundle install` |
-| Dev server | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000 |
-| Build | `bundle exec jekyll build` (output to `_site/`) |
-| Validate links | `bundle exec htmlproofer ./_site --only-4xx --checks Links,Scripts --no-enforce-https --ignore-status-codes 403 --ignore-urls '/\/pages\/arianebrandao/,/drive\.google\.com\/open\?id=1UUmS1cI/'` (aliases: `npm test`, `rake test`) |
-| Scaffold a new post | `./initpost.sh -c "Post Title"` |
+| Purpose                   | Command                                                                                                                                                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Install Ruby dependencies | `bundle install`                                                                                                                                                                                                                     |
+| Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                                                                                                              |
+| Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                                                                                                                      |
+| Validate links            | `bundle exec htmlproofer ./_site --only-4xx --checks Links,Scripts --no-enforce-https --ignore-status-codes 403 --ignore-urls '/\/pages\/arianebrandao/,/drive\.google\.com\/open\?id=1UUmS1cI/'` (aliases: `npm test`, `rake test`) |
+| Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                                                                                                      |
 
 Npm scripts (`npm run build`, `npm test`) exist in `package.json` but only wrap the Bundler/Jekyll commands above.
 
@@ -37,15 +37,16 @@ The htmlproofer flags match CI: the Images check is skipped (lazyload images use
 Posts live in `_posts/` and follow the filename pattern `YYYY-MM-DD-slug.md`. There are two front-matter shapes — copy from an existing post of the same kind:
 
 **Blog post** (tutorial/experience, shown on the blog):
+
 ```yaml
 ---
-title: "Post title"
+title: 'Post title'
 layout: post
 date: YYYY-MM-DD HH:MM
 headerImage: false
 tag:
-- tag1
-- tag2
+  - tag1
+  - tag2
 category: blog
 author: arianebrandao
 description: Short description
@@ -53,19 +54,20 @@ description: Short description
 ```
 
 **Project/portfolio post** (shown in Projects; not counted in blog pagination):
+
 ```yaml
 ---
-title: "[Portfólio] Project Name - Tech"
+title: '[Portfólio] Project Name - Tech'
 layout: post
 date: YYYY-MM-DD HH:MM
 tag:
-- projetos
-- portfolio
+  - projetos
+  - portfolio
 image: https://arianebrandao.github.io/assets/images/posts/<name>/1.png
 headerImage: true
 projects: true
 hidden: true
-description: "Portfólio: Project Name"
+description: 'Portfólio: Project Name'
 category: project
 author: arianebrandao
 externalLink: false
@@ -80,7 +82,7 @@ comments: true
 
 ## CI & Deployment
 
-`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `bundle install` (Ruby 3.2, gems cached via `bundler-cache`), `bundle exec jekyll build` (`JEKYLL_ENV=production` + `JEKYLL_GITHUB_TOKEN`), then `bundle exec htmlproofer` with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. Broken links (HTTP 4xx) fail CI — verify any external/edited URLs in posts.
+`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `bundle install` (Ruby 3.2, gems cached via `bundler-cache`), `bundle exec jekyll build` (`JEKYLL_ENV=production` + `JEKYLL_GITHUB_TOKEN`), then `bundle exec htmlproofer` with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. The `bundler-cache` step installs gems into `vendor/bundle` inside the workspace — `_config.yml` excludes `vendor` because of that, otherwise Jekyll scans the gems' templates as site content and the build fails. Broken links (HTTP 4xx) fail CI — verify any external/edited URLs in posts.
 
 ## Gotchas
 

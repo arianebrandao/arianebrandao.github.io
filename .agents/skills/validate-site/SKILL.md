@@ -38,6 +38,11 @@ reports a failure, fix it in the source file (never in `_site/`), then rerun ste
 it prints "HTML-Proofer finished successfully", then step 5. To re-check links only (gems
 already installed), reuse the running container for steps 3-5 and skip step 2.
 
+Step 2 deliberately uses Bundler's default path inside the container — do NOT set
+`BUNDLE_PATH=vendor/bundle` locally. CI installs gems there because the workspace is
+throwaway; locally it would put them in the source tree (the reason `_config.yml` excludes
+`vendor`).
+
 ## Why each htmlproofer flag (keep in sync with CI, Rakefile, and `npm test`)
 
 - `--checks Links,Scripts` — the Images check is off because lazyload images use `data-src`

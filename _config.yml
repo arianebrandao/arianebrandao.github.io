@@ -111,6 +111,8 @@ exclude:
   - package-lock.json
   - gulpfile.js
   - initpost.sh
+  # CI installs gems into vendor/bundle inside the workspace; Jekyll 3.10
+  # would scan the gems' templates as site content and fail the build
   - vendor
 
 plugins:
