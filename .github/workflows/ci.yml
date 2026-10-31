@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for broken links
+        run: >-
+          bundle exec htmlproofer ./_site --only-4xx --checks Links,Scripts
+          --no-enforce-https --ignore-status-codes 403
+          --ignore-urls '/\/pages\/arianebrandao/,/drive\.google\.com\/open\?id=1UUmS1cI/'

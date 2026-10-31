@@ -1,8 +1,11 @@
 .DS_Store
 _site
 .sass-cache
-Gemfile.lock
 _testes
 .idea
 _sass
 .editorconfig
+.commandcode/
+vendor/
+.bundle/
+

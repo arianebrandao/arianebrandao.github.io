@@ -35,7 +35,7 @@ Para baixar o LineageOS correto, você precisa saber qual tipo de imagem o seu c
 1. Baixe  e instale o app Treble Check (Informações sobre o Treble, em português) no celular.
 2. Abra o aplicativo e verifique se ele mostra a mensagem "Generic System Image found!". Isso quer dizer que ele é compatível com GSI (Generic System Image).
     > Logo abaixo dessa mensagem, vai ter algo parecido com "The type of image required is: **system-arm64-ab.img.xz**".
-3. Clique no botão "Pesquisar imagens" (leva para essa url <https://github.com/AndyYan/Android-GSI>) e escolha a imagem e versão de android que você deseja instalar. No meu caso, eu escolhi a versão **LineageOS 21 (Android 14)**.
+3. Clique no botão "Pesquisar imagens" (leva para essa url <https://github.com/AndyCGYan/treble_experimentations>) e escolha a imagem e versão de android que você deseja instalar. No meu caso, eu escolhi a versão **LineageOS 21 (Android 14)**.
 4. Na página de download da imagem, geralmente no site **SourceForge**, procure pelo arquivo que corresponde ao tipo de imagem que o seu celular aceita. No meu caso, baixei a imagem **"lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz"** [desse projeto](https://sourceforge.net/projects/andyyan-gsi/).
 
 ### Faça o download do restante dos arquivos que iremos usar

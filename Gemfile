@@ -18,12 +18,13 @@ gem "minima", "~> 2.0"
 gem "github-pages", group: :jekyll_plugins
 
 # If you have any plugins, put them here!
+# jekyll-feed, jekyll-gist and jemoji are already provided by the github-pages gem.
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.6"
-  gem 'jekyll-gist', '~> 1.5'
-  gem 'jemoji', '~> 0.10.1'
   gem 'jekyll-admin', '~> 0.8.1'
 end
+
+gem "rake"
+gem "html-proofer"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
