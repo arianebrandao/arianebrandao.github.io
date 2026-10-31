@@ -86,4 +86,4 @@ comments: true
 - The `minima` gem in the `Gemfile` is unused boilerplate from Jekyll's defaults; the actual theme is this repo's `_layouts/`/`_includes/`.
 - Changes to `_config.yml` require restarting the dev server; most other files hot-reload.
 - The `github-pages` gem pins the Jekyll/plugin versions — prefer plugins already listed in `_config.yml`.
-- Commit messages in this repo are short, lowercase, and in pt-BR (e.g. "atualiza about me").
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — see `.agents/rules/conventional-commits.md` for the allowed types, scopes, and format (e.g. `docs: update about me`).
