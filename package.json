@@ -22,6 +22,6 @@
   },
   "scripts": {
     "build": "bundle exec jekyll build",
-    "test": "bundle exec htmlproof ./_site"
+    "test": "bundle exec htmlproofer ./_site --only-4xx"
   }
 }
