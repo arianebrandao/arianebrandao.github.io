@@ -6,4 +6,6 @@ _testes
 _sass
 .editorconfig
 .commandcode/
+vendor/
+.bundle/
 
