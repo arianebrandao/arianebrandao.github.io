@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 # ------------------------------------------------------------------------------
 #
 # Program: initpost.sh
-# Author:  Vitor Britto
-# Description: script to create an initial structure for my posts.
+# Description: scaffold a new blog post following the repo conventions.
 #
-# Usage: ./initpost.sh [options] <post name>
+# Usage: ./initpost.sh [options] <post title>
 #
 # Options:
 #   -h, --help        output instructions
 #   -c, --create      create post
 #
-# Alias: alias ipost="bash ~/path/to/script/initpost.sh"
-#
 # Example:
-#   ./initpost.sh -c How to replace strings with sed
+#   ./initpost.sh -c Como substituir strings com sed
 #
-# Important Notes:
-#   - This script was created to generate new markdown files for my blog.
+# Based on the initpost.sh script from the Indigo theme by Vitor Britto.
+# Licensed under the MIT license.
 #
 # ------------------------------------------------------------------------------
 
@@ -27,115 +25,105 @@
 # | VARIABLES                                                                  |
 # ------------------------------------------------------------------------------
 
-# CORE: Do not change these lines
-# ----------------------------------------------------------------
-POST_TITLE="${@:2:$(($#-1))}"
-POST_NAME="$(echo ${@:2:$(($#-1))} | sed -e 's/ /-/g' | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/")"
 CURRENT_DATE="$(date +'%Y-%m-%d')"
-TIME=$(date +"%H:%M")
-FILE_NAME="${CURRENT_DATE}-${POST_NAME}.markdown"
-# ----------------------------------------------------------------
+TIME="$(date +%H:%M)"
+BINPATH="$(cd "$(dirname "$0")" && pwd)"
+DIST_FOLDER="${BINPATH}/_posts"
 
-
-# SETTINGS: your configuration goes here
-# ----------------------------------------------------------------
-
-# Set your destination folder
-BINPATH=$(cd `dirname $0`; pwd)
-POSTPATH="${BINPATH}/_posts"
-DIST_FOLDER="$POSTPATH"
-
-# Set your blog URL
-BLOG_URL="https://koppl.in/indigo"
-
-# Set your assets URL
-ASSETS_URL="assets/images/"
-# ----------------------------------------------------------------
-
+POST_TITLE=""
+FILE_NAME=""
 
 
 # ------------------------------------------------------------------------------
 # | UTILS                                                                      |
 # ------------------------------------------------------------------------------
 
+# Colors (only when stdout is a terminal)
+if [ -t 1 ]; then
+    C_HEAD="$(tput setaf 6)"
+    C_OK="$(tput setaf 2)"
+    C_ERR="$(tput setaf 1)"
+    C_WARN="$(tput setaf 3)"
+    C_RESET="$(tput sgr0)"
+else
+    C_HEAD=""
+    C_OK=""
+    C_ERR=""
+    C_WARN=""
+    C_RESET=""
+fi
+
 # Header logging
 e_header() {
-    printf "$(tput setaf 38)→ %s$(tput sgr0)\n" "$@"
+    printf '%s\n' "${C_HEAD}→ ${*}${C_RESET}"
 }
 
 # Success logging
 e_success() {
-    printf "$(tput setaf 76)✔ %s$(tput sgr0)\n" "$@"
+    printf '%s\n' "${C_OK}✔ ${*}${C_RESET}"
 }
 
 # Error logging
 e_error() {
-    printf "$(tput setaf 1)✖ %s$(tput sgr0)\n" "$@"
+    printf '%s\n' "${C_ERR}✖ ${*}${C_RESET}"
 }
 
 # Warning logging
 e_warning() {
-    printf "$(tput setaf 3)! %s$(tput sgr0)\n" "$@"
+    printf '%s\n' "${C_WARN}! ${*}${C_RESET}"
 }
-
 
 
 # ------------------------------------------------------------------------------
 # | MAIN FUNCTIONS                                                             |
 # ------------------------------------------------------------------------------
 
-# Everybody needs some help
 initpost_help() {
 
 cat <<EOT
 ------------------------------------------------------------------------------
-INIT POST - A shortcut to create an initial structure for my posts.
+INIT POST - Scaffold a new blog post.
 ------------------------------------------------------------------------------
-Usage: ./initpost.sh [options] <post name>
+Usage: ./initpost.sh [options] <post title>
 Options:
   -h, --help        output instructions
   -c, --create      create post
 Example:
-  ./initpost.sh -c How to replace strings with sed
-Important Notes:
-  - This script was created to generate new text files to my blog.
-Copyright (c) Vitor Britto
-Licensed under the MIT license.
+  ./initpost.sh -c Como substituir strings com sed
 ------------------------------------------------------------------------------
 EOT
 
 }
 
-# Initial content
+# Initial content (conventions: see AGENTS.md)
 initpost_content() {
 
-echo "---"
-echo "title: \"${POST_TITLE}\""
-echo "layout: post"
-echo "date: ${CURRENT_DATE} ${TIME}"
-echo "image: '/assets/images/'"
-echo "description:"
-echo "tag:"
-echo "blog: true"
-echo "jemoji:"
-echo "author:"
-echo "---"
+cat <<EOT
+---
+title: "${POST_TITLE//\"/\\\"}"
+layout: post
+date: ${CURRENT_DATE} ${TIME}
+headerImage: false
+tag:
+category: blog
+author: arianebrandao
+description: ""
+---
+EOT
 
 }
 
 # Create file
 initpost_file() {
-    if [ ! -f "$FILE_NAME" ]; then
-        e_header "Creating template..."
-        initpost_content > "${DIST_FOLDER}/${FILE_NAME}"
-        e_success "Initial post successfully created!"
-    else
-        e_warning "File already exists."
+    if [ -e "${DIST_FOLDER}/${FILE_NAME}" ]; then
+        e_warning "File already exists: _posts/${FILE_NAME}"
         exit 1
     fi
 
+    e_header "Creating template..."
+    initpost_content > "${DIST_FOLDER}/${FILE_NAME}"
+    e_success "Post created: _posts/${FILE_NAME}"
 }
-
 
 
 # ------------------------------------------------------------------------------
@@ -144,19 +132,42 @@ initpost_file() {
 
 main() {
 
-    # Show help
-    if [[ "${1}" == "-h" || "${1}" == "--help" ]]; then
-        initpost_help ${1}
-        exit
-    fi
+    case "${1:-}" in
+        -h|--help)
+            initpost_help
+            exit 0
+            ;;
+        -c|--create)
+            if [ $# -lt 2 ]; then
+                e_error "Informe o título do post."
+                initpost_help
+                exit 1
+            fi
 
-    # Create
-    if [[ "${1}" == "-c" || "${1}" == "--create" ]]; then
-        initpost_file $*
-        exit
-    fi
+            shift
+            POST_TITLE="${*}"
+
+            # Normalize to an ASCII slug (accents become plain letters)
+            POST_NAME="$(printf '%s' "${POST_TITLE}" \
+                | iconv -f utf-8 -t ascii//TRANSLIT \
+                | tr '[:upper:]' '[:lower:]' \
+                | sed -e 's/[^a-z0-9]\+/-/g' -e 's/^-//' -e 's/-$//')"
+
+            if [ -z "${POST_NAME}" ]; then
+                e_error "Não foi possível gerar um slug para o título informado."
+                exit 1
+            fi
+
+            FILE_NAME="${CURRENT_DATE}-${POST_NAME}.md"
+            initpost_file
+            ;;
+        *)
+            initpost_help
+            exit 1
+            ;;
+    esac
 
 }
 
 # Initialize
-main $*
+main "$@"

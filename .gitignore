@@ -1,11 +1,9 @@
 .DS_Store
 _site
-.sass-cache
-_testes
+.jekyll-cache
+.jekyll-metadata
+node_modules
 .idea
-_sass
-.editorconfig
 .commandcode/
 vendor/
 .bundle/
-

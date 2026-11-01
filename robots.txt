@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://arianebrandao.github.io/sitemap.xml

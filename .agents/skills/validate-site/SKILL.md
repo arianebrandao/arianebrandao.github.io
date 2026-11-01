@@ -1,6 +1,6 @@
 ---
 name: validate-site
-description: Validate the Jekyll site locally in an ephemeral podman container running the exact CI pipeline (bundle install, jekyll build, htmlproofer with CI-matching flags). Use when asked to validate or test the site locally, check for broken links, run the build or tests, or when bundle/jekyll/rake/npm test commands are needed but Ruby is unavailable on the host. Triggers include "validar o site", "rodar os testes", "testar links antes do push", "build local".
+description: Validate the Jekyll site locally in an ephemeral podman container running the exact CI pipeline (bundle install, then rake test = jekyll build + htmlproofer with CI-matching flags). Use when asked to validate or test the site locally, check for broken links, run the build or tests, or when bundle/jekyll/rake commands are needed but Ruby is unavailable on the host. Triggers include "validar o site", "rodar os testes", "testar links antes do push", "build local".
 ---
 
 # Validate Site Locally
@@ -21,29 +21,27 @@ podman run -d --name jekyll-ci --security-opt label=disable \
 # 2. Install gems (slow on first run: native gems like sassc/eventmachine compile)
 podman exec jekyll-ci bundle install
 
-# 3. Build exactly like CI
-podman exec -e JEKYLL_ENV=production jekyll-ci bundle exec jekyll build
+# 3. Build exactly like CI and check links in one step
+#    (the Rakefile is the single source of truth for the flags; it sets
+#    JEKYLL_ENV=production itself — no token needed locally, the
+#    /pages/arianebrandao artifact it produces is ignored by htmlproofer)
+podman exec jekyll-ci bundle exec rake test
 
-# 4. Check links — flags MUST match .github/workflows/ci.yml
-podman exec jekyll-ci bundle exec htmlproofer ./_site --only-4xx \
-  --checks Links,Scripts --no-enforce-https --ignore-status-codes 403 \
-  --ignore-urls '/\/pages\/arianebrandao/,/drive\.google\.com\/open\?id=1UUmS1cI/'
-
-# 5. Always remove the container, even after failures
+# 4. Always remove the container, even after failures
 podman rm -f jekyll-ci
 ```
 
-Worked example: after editing `_posts/<some-post>.md`, run all five commands; if htmlproofer
-reports a failure, fix it in the source file (never in `_site/`), then rerun steps 3-4 until
-it prints "HTML-Proofer finished successfully", then step 5. To re-check links only (gems
-already installed), reuse the running container for steps 3-5 and skip step 2.
+Worked example: after editing `_posts/<some-post>.md`, run all four commands; if htmlproofer
+reports a failure, fix it in the source file (never in `_site/`), then rerun step 3 until
+it prints "HTML-Proofer finished successfully", then step 4. To re-check links only (gems
+already installed), reuse the running container for steps 3-4 and skip step 2.
 
 Step 2 deliberately uses Bundler's default path inside the container — do NOT set
 `BUNDLE_PATH=vendor/bundle` locally. CI installs gems there because the workspace is
 throwaway; locally it would put them in the source tree (the reason `_config.yml` excludes
 `vendor`).
 
-## Why each htmlproofer flag (keep in sync with CI, Rakefile, and `npm test`)
+## Why each htmlproofer flag (defined only in the `Rakefile`; CI calls `rake test`)
 
 - `--checks Links,Scripts` — the Images check is off because lazyload images use `data-src`
   and have no `src`, which that check reports as a failure.
