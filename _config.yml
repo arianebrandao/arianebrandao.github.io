@@ -1,3 +1,5 @@
+title: Ariane Brandão
+
 # main text of home
 name: Ariane Brandão
 bio: Desenvolvedora front-end, cuja rotina inclui codificar, jogar videojogos e acariciar cachorros.
@@ -9,12 +11,6 @@ description: Um blog sobre programação e coisas relacionadas à tecnologia.
 # better with square images
 external-image: false
 picture: assets/images/profile.jpg
-
-# If you want to include your resume, set to true
-# and specify source (external or local).
-resume: false
-resume-external: true
-resume-url: https://google.com/?q=my+resume
 
 url: https://arianebrandao.github.io
 # your url: http://USERNAME.github.io
@@ -105,22 +101,20 @@ exclude:
   - AGENTS.md
   - README.md
   - LICENSE
+  - Rakefile
   - Gemfile
   - Gemfile.lock
-  - package.json
-  - package-lock.json
-  - gulpfile.js
   - initpost.sh
+  - node_modules
   # CI installs gems into vendor/bundle inside the workspace; Jekyll 3.10
   # would scan the gems' templates as site content and fail the build
   - vendor
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-gist
   - jekyll-feed
   - jemoji
-  - jekyll-admin
+  - jekyll-sitemap
 
 jekyll-mentions:
   base_url: https://github.com

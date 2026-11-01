@@ -24,7 +24,6 @@ GEM
       io-event (~> 1.11)
       metrics (~> 0.12)
       traces (~> 0.18)
-    backports (3.25.3)
     base64 (0.3.0)
     benchmark (0.5.0)
     bigdecimal (3.3.1)
@@ -153,11 +152,6 @@ GEM
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
       webrick (>= 1.0)
-    jekyll-admin (0.8.1)
-      addressable (~> 2.4)
-      jekyll (~> 3.3)
-      sinatra (~> 1.4)
-      sinatra-contrib (~> 1.4)
     jekyll-avatar (0.8.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-coffeescript (1.2.2)
@@ -273,7 +267,6 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    multi_json (1.21.2)
     net-http (0.10.0)
       net-protocol (>= 0.3.0)
       uri (>= 0.11.1)
@@ -294,11 +287,6 @@ GEM
     prism (1.9.0)
     public_suffix (5.1.1)
     racc (1.8.1)
-    rack (1.6.13)
-    rack-protection (1.5.5)
-      rack
-    rack-test (2.3.0)
-      rack (>= 1.3)
     rainbow (3.1.1)
     rake (13.4.2)
     rb-fsevent (0.11.2)
@@ -318,20 +306,8 @@ GEM
       faraday (>= 0.17.3, < 3)
     securerandom (0.4.1)
     simpleidn (0.2.3)
-    sinatra (1.4.8)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
-    sinatra-contrib (1.4.7)
-      backports (>= 2.0)
-      multi_json
-      rack-protection
-      rack-test
-      sinatra (~> 1.4.0)
-      tilt (>= 1.3, < 3)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
-    tilt (2.9.0)
     timeout (0.6.1)
     traces (0.18.2)
     ttfunk (1.8.0)
@@ -351,9 +327,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  html-proofer
-  jekyll-admin (~> 0.8.1)
-  minima (~> 2.0)
+  html-proofer (~> 5.2)
   rake
   tzinfo-data
 
