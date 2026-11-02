@@ -14,9 +14,10 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 | Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                                                                                                              |
 | Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                                                                                                                      |
 | Validate links            | `bundle exec rake test` (builds the site and runs htmlproofer — the Rakefile is the single source of truth for the flags, and CI calls it)                                                                                             |
+| Build CSS                 | `sass --style compressed assets/css/style.scss assets/css/style.min.css` (the site serves `style.min.css`; the `.scss` is not compiled by Jekyll)                                                                                    |
 | Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                                                                                                      |
 
-The htmlproofer flags (defined only in the `Rakefile`) match what CI runs: the Images check is skipped (lazyload images use `data-src`, no `src`), bot-wall 403s are ignored, and the `pages/arianebrandao` URLs are ignored — `jekyll-github-metadata` emits those in canonical tags and sitemap URLs when building locally without `JEKYLL_GITHUB_TOKEN` (CI passes the Actions `GITHUB_TOKEN`, so its builds resolve correctly). The `drive.google.com/open?id=1UUmS1cI...` ignore is a known-dead link in the Warframe post, pending a replacement.
+The htmlproofer flags (defined only in the `Rakefile`) match what CI runs: `Links`, `Scripts` and `Images` are checked, HTTPS is enforced, and 403s are ignored (bot walls like winehq.org). `baseurl: ""` is set explicitly in `_config.yml` because `jekyll-github-metadata` otherwise injects a `/pages/arianebrandao` fallback when building locally without `JEKYLL_GITHUB_TOKEN`. The `drive.google.com/open?id=1UUmS1cI...` ignore is a known-dead link in the Warframe post, pending a replacement.
 
 ## Repository Structure
 
@@ -25,7 +26,7 @@ The htmlproofer flags (defined only in the `Rakefile`) match what CI runs: the I
 - `_posts/` — blog and portfolio posts (Markdown, see conventions below).
 - `_layouts/` — page templates (`default`, `home`, `page`, `post`, `compress`). This is the real "theme".
 - `_includes/` — reusable partials (nav, footer, social links, analytics, Disqus, etc.).
-- `assets/` — `css/` (Bulma is **vendored** as `bulma.min.css` plus `style.scss`), `js/` (`lazysizes.min.js`), `images/` (post images under `assets/images/posts/<name>/`).
+- `assets/` — `css/` (Bulma is **vendored** as `bulma.min.css`; `style.scss` is the source and the served `style.min.css` is generated from it manually), `js/` (`lazysizes.min.js`), `images/` (post images under `assets/images/posts/<name>/`).
 - Top-level pages: `index.html`, `about.md`, `contact.html`, `projects.html`, `blog/`, `tags.html`, `404.html`, `notallowed.html`.
 - `.github/workflows/ci.yml` — CI pipeline (see CI & Deployment).
 - `initpost.sh` — post scaffolding script.

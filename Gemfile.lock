@@ -60,6 +60,8 @@ GEM
       logger
     faraday-net_http (3.5.0)
       net-http (~> 0.5)
+    ffi (1.17.4-arm64-darwin)
+    ffi (1.17.4-x86_64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
@@ -272,6 +274,10 @@ GEM
       uri (>= 0.11.1)
     net-protocol (0.4.0)
       timeout
+    nokogiri (1.19.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.19.4-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     octokit (4.25.1)
@@ -323,6 +329,8 @@ GEM
     zeitwerk (2.8.3)
 
 PLATFORMS
+  arm64-darwin-22
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES

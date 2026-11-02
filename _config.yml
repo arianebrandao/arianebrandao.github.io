@@ -13,6 +13,7 @@ external-image: false
 picture: assets/images/profile.jpg
 
 url: https://arianebrandao.github.io
+baseurl: ""
 # your url: http://USERNAME.github.io
 repository: arianebrandao/arianebrandao.github.io
 
@@ -59,11 +60,6 @@ authors:
     picture: assets/images/profile.jpg
     #twitter: ariplaymad
 
-# do you want a larger site? change the option below
-# options: [normal, large] | default: normal
-# normal = 560px / large = 810px
-width: large
-
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
 # paginate_path: "blog/:num/"
@@ -76,9 +72,6 @@ about: true
 blog: true
 contact: true
 
-# do you want to show the "read time" of the posts?
-read-time: false
-
 # do you want to show the "tags" inside the posts?
 show-tags: true
 
@@ -90,12 +83,6 @@ post-advance-links: [blog]
 
 # show author block at the end of a post ?
 show-author: true
-
-# do you want some animations?
-animation: true
-
-# Encoding
-encoding: utf-8
 
 exclude:
   - AGENTS.md
@@ -110,11 +97,15 @@ exclude:
   # would scan the gems' templates as site content and fail the build
   - vendor
 
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  startings: [html, head, body]
+  blanklines: true
+
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
   - jemoji
   - jekyll-sitemap
-
-jekyll-mentions:
-  base_url: https://github.com

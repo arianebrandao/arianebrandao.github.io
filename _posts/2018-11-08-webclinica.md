@@ -123,9 +123,7 @@ A consulta médica é feita em 3 passos: Anamnese, Análise Médica e Finalizar 
 <figcaption class="caption">Na aba administração, podemos gerenciar tudo relacionado à clínica/consultório</figcaption>
 <div class="breaker"></div>
 
-Site no ar: <http://websofthouse.com.br/webclinica/>  
-Para quem ficou curioso, também pode testar o sistema por 15 dias de graça: [se cadastrando aqui](http://websofthouse.com.br/webclinica/login/cadastro.php)
+Site no ar: <https://websofthouse.com.br/webclinica/>  
+Para quem ficou curioso, também pode testar o sistema por 15 dias de graça: [se cadastrando aqui](https://websofthouse.com.br/webclinica/login/cadastro.php)
 
 Isso é tudo pessoal o/
-
-[4]: https://arianebrandao.github.io/assets/images/posts/webclinica/4.jpg

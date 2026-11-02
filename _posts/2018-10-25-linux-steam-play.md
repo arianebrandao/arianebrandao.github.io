@@ -15,7 +15,7 @@ description: Linux - configurando a Steam Play para rodar jogos nativamente
 
 ### Sobre a Steam Play para Linux
 
-A grande novidade na Steam (ainda em beta) é a inclusão de uma versão modificada do [Wine](http://www.winehq.org), chamada **Proton**, com isso a ferramenta passa a oferecer compatibilidade para os jogos do Windows.
+A grande novidade na Steam (ainda em beta) é a inclusão de uma versão modificada do [Wine](https://www.winehq.org), chamada **Proton**, com isso a ferramenta passa a oferecer compatibilidade para os jogos do Windows.
 Algumas das melhorias:
 
 * Jogos do Windows que atualmente não têm versão para Linux poderão agora ser completamente instalados e iniciados diretamente dos clientes Steam para Linux com Steamworks nativo e suporte ao OpenVR.

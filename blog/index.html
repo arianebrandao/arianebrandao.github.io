@@ -13,18 +13,6 @@ title: Blog
 			{% if site.posts.size == 0 %}
 				<h3 class="title is-3 has-text-centered">Nada publicado até o momento.</h3>
 				
-				{% elsif site.paginate %}
-					<h3 class="title is-3 has-text-centered">Meus posts</h3>
-				
-					{% for post in paginator.posts %}
-						{% if post.category == 'blog' %}
-							{% if post.hidden != true %}
-								{% include blog-post.html %}
-							{% endif %}
-						{% endif %}
-					{% endfor %}
-				
-					{% include pagination.html%}
 				{% else %}
 					<h3 class="title is-3 has-text-centered">Meus posts</h3>
 					

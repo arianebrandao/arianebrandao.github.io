@@ -10,7 +10,7 @@ title: Projetos
                 {% if post.projects %}
                     <div class="post">
                         <h4 class="subtitle">
-                            <a href="{% if post.externalLink %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
+                            <a href="{% if post.externalLink and post.externalLink != true %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
                                 <span class="tag is-light">{{ post.date | date: "%d/%m/%Y" }}</span>
                                 {{ post.title }}
                             </a>

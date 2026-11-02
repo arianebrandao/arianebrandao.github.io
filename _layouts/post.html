@@ -8,18 +8,21 @@ layout: page
         <nav class="navbar">
           <div class="container">
             <div class="navbar-brand">
-              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+              <button type="button" class="navbar-burger burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbarMenuHeroA" data-target="navbarMenuHeroA">
                 <span></span>
                 <span></span>
                 <span></span>
-              </span>
+              </button>
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
               <div class="navbar-end">
-                <a href="{{ site.url }}/" class="navbar-item is-active">Home</a>
+                <a href="{{ site.url }}/" class="navbar-item{% if page.url == '/' %} is-active{% endif %}">Home</a>
                 <a href="{{ site.url }}/blog" class="navbar-item">Blog</a>
                 <a href="{{ site.url }}/projects" class="navbar-item">Projetos e Portfólio</a>
                 <a href="{{ site.url }}/about" class="navbar-item">Sobre mim</a>
+                {% if site.contact %}
+                <a href="{{ site.url }}/contact" class="navbar-item">Faça um orçamento!</a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -30,7 +33,7 @@ layout: page
       <div class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title">{{ page.title }}</h1>
-            <h2 class="subtitle">{{ page.date | date: "%A. %B %d, %Y" }} {% if site.read-time %} - {% include read-time.html %}{% endif %}</h2>
+            <h2 class="subtitle">{{ page.date | date: "%d/%m/%Y" }}</h2>
             
             {% if site.show-tags %}
                 <div class="post-tags">

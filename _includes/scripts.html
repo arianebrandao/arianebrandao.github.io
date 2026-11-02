@@ -8,15 +8,17 @@
 				el.addEventListener('click', () => {
 					const target = el.dataset.target;
 					const $target = document.getElementById(target);
+					if (!$target) return;
 					el.classList.toggle('is-active');
 					$target.classList.toggle('is-active');
+					el.setAttribute('aria-expanded', el.classList.contains('is-active'));
 				});
 			});
 		}
 	});
 </script>
-<script src="https://arianebrandao.github.io/assets/js/lazysizes.min.js" async=""></script>
 {% endraw %}
+<script src="{{ '/assets/js/lazysizes.min.js' | relative_url }}" defer></script>
 
 {% if page.title == "Home" %}
 	{% raw %}

@@ -47,6 +47,6 @@ bootrec /fixmbr
 ```
 
 
-Link que me ajudou: <http://meupinguim.com/como-remover-grub-restaurar-boot-windows/>
+Link que me ajudou: <https://meupinguim.com/como-remover-grub-restaurar-boot-windows/>
 
 Isso é tudo pessoal o/

@@ -46,7 +46,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ### Layout
 
-Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/0xmu9mj2TJYoIOubBFWsk5/dtmoney-Ignite-(Copy)). É necessário ter conta no [Figma](http://figma.com/) para acessá-lo.
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/0xmu9mj2TJYoIOubBFWsk5/dtmoney-Ignite-(Copy)). É necessário ter conta no [Figma](https://figma.com/) para acessá-lo.
 
 <div class="breaker"></div>
 

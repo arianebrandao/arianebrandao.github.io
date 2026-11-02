@@ -7,18 +7,16 @@ layout: compress
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="{{ site.bio }}">
     <meta name="author" content="{{ site.name }}">
 
     {% seo %}
     
     {% include favicon.html %}
 
-    <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />
 
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/bulma.min.css"/>
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/style.min.css"/>
+    <link rel="stylesheet" href="{{ '/assets/css/bulma.min.css' | relative_url }}"/>
+    <link rel="stylesheet" href="{{ '/assets/css/style.min.css' | relative_url }}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <script id="cookieyes" src="https://cdn-cookieyes.com/client_data/942d6eef0c71b7ddb212075f/script.js"></script>
 
@@ -30,7 +28,9 @@ layout: compress
       <script src="https://www.google.com/recaptcha/api.js?render=6LeV-vAjAAAAAHQpoaPCEi4qBeNcR6Q1Dwv46OHj"></script>
     {% endif %}
 
-    {% include analytics-google.html %}
+    {% if jekyll.environment == "production" %}
+      {% include analytics-google.html %}
+    {% endif %}
 </head>
 <body>
   {% assign showHeader = false %}

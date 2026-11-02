@@ -23,8 +23,7 @@ podman exec jekyll-ci bundle install
 
 # 3. Build exactly like CI and check links in one step
 #    (the Rakefile is the single source of truth for the flags; it sets
-#    JEKYLL_ENV=production itself — no token needed locally, the
-#    /pages/arianebrandao artifact it produces is ignored by htmlproofer)
+#    JEKYLL_ENV=production itself — no token needed locally)
 podman exec jekyll-ci bundle exec rake test
 
 # 4. Always remove the container, even after failures
@@ -43,21 +42,28 @@ throwaway; locally it would put them in the source tree (the reason `_config.yml
 
 ## Why each htmlproofer flag (defined only in the `Rakefile`; CI calls `rake test`)
 
-- `--checks Links,Scripts` — the Images check is off because lazyload images use `data-src`
-  and have no `src`, which that check reports as a failure.
-- `--no-enforce-https` — old posts and the Disqus include intentionally keep `http://` links.
-- `--ignore-status-codes 403` — bot walls (GitLab issues, winehq.org) return 403 to crawlers.
-- `--ignore-urls /pages/arianebrandao/` — `jekyll-github-metadata` writes these URLs into
-  canonical tags when building WITHOUT `JEKYLL_GITHUB_TOKEN`; CI passes the Actions
-  `GITHUB_TOKEN`, so this artifact only appears in local builds.
-- `--ignore-urls drive.google.com/open?id=1UUmS1cI` — known-dead Warframe patch link,
-  pending a replacement (see AGENTS.md). Remove this ignore when the link is fixed.
+- `checks: Links, Images, Scripts` + `swap_attributes: { "img" => ["data-src", "src"] }` —
+  lazyload images carry the real path in `data-src`; the swap lets the Images check validate
+  them instead of disabling the check.
+- `enforce_https: true` — internal and external links must use HTTPS. If a new `http://` link
+  fails, upgrade it in the source rather than disabling the flag.
+- `ignore_status_codes: [403, 999]` — bot walls (GitLab issues, winehq.org) return 403 and
+  LinkedIn returns 999 to crawlers.
+- `ignore_urls` (dead client/project domains) — `aliou.com.br`, `avioesavenda.com.br`,
+  `bazardakim.com`, `gloucos.com.br`, `kimcrivel.com`, `pedigreelove.com.br`, `redefood.com`,
+  `websofthouse.com.br`, `revistabicicleta.com`, `meupinguim.com` no longer resolve or serve.
+  Remove the entry when the corresponding link is updated or dropped from the post.
+- `ignore_urls drive.google.com/open?id=1UUmS1cI` — known-dead Warframe patch link, pending a
+  replacement (see AGENTS.md). Remove this ignore when the link is fixed.
 
 ## Troubleshooting
 
-- `Your bundle only supports platforms ['x86_64-linux']` when bundling from another OS: run
-  `bundle lock --add-platform <your-platform>` and commit the updated lock. The lock
-  currently declares only x86_64-linux.
+- `Your bundle only supports platforms [...]` when bundling from another OS: run
+  `bundle lock --add-platform <your-platform>` and commit the updated lock. The lock declares
+  `x86_64-linux`, `x86_64-darwin-22` and `arm64-darwin-22`.
+- Internal links gain a `/pages/arianebrandao` prefix and fail: `_config.yml` must keep
+  `baseurl: ""`, otherwise `jekyll-github-metadata` injects that fallback when building
+  without `JEKYLL_GITHUB_TOKEN`.
 - `No repo name found` during build: `_config.yml` must keep
   `repository: arianebrandao/arianebrandao.github.io`.
 - Build warning `No GitHub API authentication could be found` — expected locally without a
