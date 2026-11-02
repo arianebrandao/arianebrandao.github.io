@@ -8,14 +8,14 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 
 ## Commands
 
-| Purpose                   | Command                                                                                                                                                                                                                              |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Install Ruby dependencies | `bundle install`                                                                                                                                                                                                                     |
-| Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                                                                                                              |
-| Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                                                                                                                      |
-| Validate links            | `bundle exec rake test` (builds the site and runs htmlproofer — the Rakefile is the single source of truth for the flags, and CI calls it)                                                                                             |
-| Build CSS                 | `sass --style compressed assets/css/style.scss assets/css/style.min.css` (the site serves `style.min.css`; the `.scss` is not compiled by Jekyll)                                                                                    |
-| Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                                                                                                      |
+| Purpose                   | Command                                                                                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Install Ruby dependencies | `bundle install`                                                                                                                                  |
+| Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                           |
+| Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                                   |
+| Validate links            | `bundle exec rake test` (builds the site and runs htmlproofer — the Rakefile is the single source of truth for the flags, and CI calls it)        |
+| Build CSS                 | `sass --style compressed assets/css/style.scss assets/css/style.min.css` (the site serves `style.min.css`; the `.scss` is not compiled by Jekyll) |
+| Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                   |
 
 There is no Ruby on this machine — run the Ruby commands inside the podman container described in `README.md` (dev server) or in the `validate-site` skill (build + link checks).
 
@@ -94,6 +94,7 @@ comments: true
 - Changes to `_config.yml` require restarting the dev server; most other files hot-reload.
 - The `github-pages` gem pins the Jekyll/plugin versions — prefer plugins already listed in `_config.yml`.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — see `.agents/rules/conventional-commits.md` for the allowed types, scopes, and format (e.g. `docs: update about me`).
+- **Commits are delegated to the `commit-writer` subagent** (`.commandcode/agents/commit-writer.md`) — whenever the user asks to commit, hand the task to it instead of running `git commit` yourself.
 
 ## Learning Loop
 
