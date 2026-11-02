@@ -16,15 +16,15 @@ This project follows the [Conventional Commits](https://www.conventionalcommits.
 
 ## Allowed Types
 
-| Type       | Description                                          |
-| ---------- | ---------------------------------------------------- |
-| `feat`     | New feature                                          |
-| `fix`      | Bug fix                                              |
-| `docs`     | Documentation changes                                |
+| Type       | Description                                             |
+| ---------- | ------------------------------------------------------- |
+| `feat`     | New feature                                             |
+| `fix`      | Bug fix                                                 |
+| `docs`     | Documentation changes                                   |
 | `refactor` | Code change that neither fixes a bug nor adds a feature |
-| `chore`    | Maintenance tasks (configs, dependencies, etc.)      |
-| `build`    | Changes to the build system                         |
-| `test`     | Adding or correcting tests                          |
+| `chore`    | Maintenance tasks (configs, dependencies, etc.)         |
+| `build`    | Changes to the build system                             |
+| `test`     | Adding or correcting tests                              |
 
 ## Optional Scope
 
@@ -52,3 +52,5 @@ chore: bump jekyll dependencies
 - Do not add punctuation at the end
 - Maximum 72 characters for the title
 - Use the body (separated by a blank line) for explanations when needed
+- Never include a "Co-authored-by" trailer in commit messages!!!!!
+- Write texts in portuguese (pt-BR)
