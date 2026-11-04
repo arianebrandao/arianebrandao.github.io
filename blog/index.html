@@ -6,15 +6,15 @@ layout: home
 title: Blog
 ---
 
-<div class="container">
-	<div class="container-content">
-	    <div class="blog-posts">
+<div class="container-page">
+	<div class="px-4 pt-4">
+	    <div class="my-[50px]">
 	    	
 			{% if site.posts.size == 0 %}
-				<h3 class="title is-3 has-text-centered">Nada publicado até o momento.</h3>
+				<h3 class="text-center text-[2rem] font-semibold">Nada publicado até o momento.</h3>
 				
 				{% else %}
-					<h3 class="title is-3 has-text-centered">Meus posts</h3>
+					<h3 class="text-center text-[2rem] font-semibold">Meus posts</h3>
 					
 					{% for post in site.posts %}
 						{% if post.category == 'blog' %}

@@ -1,6 +1,6 @@
 ---
 name: validate-site
-description: Validate the Jekyll site locally in an ephemeral podman container running the exact CI pipeline (bundle install, then rake test = jekyll build + htmlproofer with CI-matching flags). Use when asked to validate or test the site locally, check for broken links, run the build or tests, or when bundle/jekyll/rake commands are needed but Ruby is unavailable on the host. Triggers include "validar o site", "rodar os testes", "testar links antes do push", "build local".
+description: Validate the Jekyll site locally in an ephemeral podman container running the exact CI pipeline (npm build:css, bundle install, then rake test = jekyll build + htmlproofer with CI-matching flags). Use when asked to validate or test the site locally, check for broken links, run the build or tests, or when bundle/jekyll/rake commands are needed but Ruby is unavailable on the host. Triggers include "validar o site", "rodar os testes", "testar links antes do push", "build local".
 ---
 
 # Validate Site Locally
@@ -13,6 +13,11 @@ root.
 ## Steps
 
 ```bash
+# 0. Build the CSS on the host (Node/npm). The site serves the committed
+#    assets/css/style.min.css; CI fails if it is stale after this build.
+npm ci && npm run build:css
+git diff --exit-code -- assets/css/style.min.css
+
 # 1. Start the container (first run pulls the image; project mounts at /work;
 #    label=disable avoids SELinux relabeling of the project files)
 podman run -d --name jekyll-ci --security-opt label=disable \
@@ -30,10 +35,11 @@ podman exec jekyll-ci bundle exec rake test
 podman rm -f jekyll-ci
 ```
 
-Worked example: after editing `_posts/<some-post>.md`, run all four commands; if htmlproofer
-reports a failure, fix it in the source file (never in `_site/`), then rerun step 3 until
-it prints "HTML-Proofer finished successfully", then step 4. To re-check links only (gems
-already installed), reuse the running container for steps 3-4 and skip step 2.
+Worked example: after editing `_posts/<some-post>.md` or any layout/class, run step 0, then
+the four container commands; if htmlproofer reports a failure, fix it in the source file (never
+in `_site/`), then rerun step 3 until it prints "HTML-Proofer finished successfully", then
+step 4. To re-check links only (gems already installed), reuse the running container for
+steps 3-4 and skip step 2.
 
 Step 2 deliberately uses Bundler's default path inside the container — do NOT set
 `BUNDLE_PATH=vendor/bundle` locally. CI installs gems there because the workspace is
@@ -58,6 +64,10 @@ throwaway; locally it would put them in the source tree (the reason `_config.yml
 
 ## Troubleshooting
 
+- Stale CSS: `git diff --exit-code -- assets/css/style.min.css` fails after step 0 — run
+  `npm run build:css` and commit the regenerated `style.min.css`. The site serves the
+  committed file; editing only `assets/css/tailwind.css` or the templates changes nothing
+  until the CSS is rebuilt.
 - `Your bundle only supports platforms [...]` when bundling from another OS: run
   `bundle lock --add-platform <your-platform>` and commit the updated lock. The lock declares
   `x86_64-linux`, `x86_64-darwin-22` and `arm64-darwin-22`.

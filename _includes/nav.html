@@ -1,19 +1,19 @@
-            <ul>
-              <li {% if page.title == "Home" %} class="is-active" {% endif %}><a href="{{ site.url }}/">Home</a></li>
+            <ul class="flex w-full overflow-x-auto">
+              <li class="flex-1 shrink-0"><a href="{{ site.url }}/" class="flex items-center justify-center whitespace-nowrap rounded-t border border-transparent px-4 py-2 text-base font-semibold {% if page.title == 'Home' %}border-b-transparent border-[#dbdbdb] bg-white text-link{% else %}text-white hover:border-b-[#dbdbdb] hover:bg-[#f5f5f5] hover:text-link{% endif %}"{% if page.title == 'Home' %} aria-current="page"{% endif %}>Home</a></li>
 
               {% if site.blog == true %}
-                <li {% if page.title == "Blog" %} class="is-active" {% endif %}><a href="{{ site.url }}/blog">Blog</a></li>
+                <li class="flex-1 shrink-0"><a href="{{ site.url }}/blog" class="flex items-center justify-center whitespace-nowrap rounded-t border border-transparent px-4 py-2 text-base font-semibold {% if page.title == 'Blog' %}border-b-transparent border-[#dbdbdb] bg-white text-link{% else %}text-white hover:border-b-[#dbdbdb] hover:bg-[#f5f5f5] hover:text-link{% endif %}"{% if page.title == 'Blog' %} aria-current="page"{% endif %}>Blog</a></li>
               {% endif %}
 
               {% if site.projects == true %}
-                <li {% if page.title == "Projetos" %} class="is-active" {% endif %}><a href="{{ site.url }}/projects">Projetos e Portfólio</a></li>
+                <li class="flex-1 shrink-0"><a href="{{ site.url }}/projects" class="flex items-center justify-center whitespace-nowrap rounded-t border border-transparent px-4 py-2 text-base font-semibold {% if page.title == 'Projetos' %}border-b-transparent border-[#dbdbdb] bg-white text-link{% else %}text-white hover:border-b-[#dbdbdb] hover:bg-[#f5f5f5] hover:text-link{% endif %}"{% if page.title == 'Projetos' %} aria-current="page"{% endif %}>Projetos e Portfólio</a></li>
               {% endif %}
 
               {% if site.about == true %}
-                <li {% if page.title == "Sobre mim" %} class="is-active" {% endif %}><a href="{{ site.url }}/about">Sobre mim</a></li>
+                <li class="flex-1 shrink-0"><a href="{{ site.url }}/about" class="flex items-center justify-center whitespace-nowrap rounded-t border border-transparent px-4 py-2 text-base font-semibold {% if page.title == 'Sobre mim' %}border-b-transparent border-[#dbdbdb] bg-white text-link{% else %}text-white hover:border-b-[#dbdbdb] hover:bg-[#f5f5f5] hover:text-link{% endif %}"{% if page.title == 'Sobre mim' %} aria-current="page"{% endif %}>Sobre mim</a></li>
               {% endif %}
 
               {% if site.contact %}
-                <li {% if page.title == "Contato" %} class="is-active" {% endif %}><a href="{{ site.url }}/contact">Faça um orçamento!</a></li>
+                <li class="flex-1 shrink-0"><a href="{{ site.url }}/contact" class="flex items-center justify-center whitespace-nowrap rounded-t border border-transparent px-4 py-2 text-base font-semibold {% if page.title == 'Contato' %}border-b-transparent border-[#dbdbdb] bg-white text-link{% else %}text-white hover:border-b-[#dbdbdb] hover:bg-[#f5f5f5] hover:text-link{% endif %}"{% if page.title == 'Contato' %} aria-current="page"{% endif %}>Faça um orçamento!</a></li>
               {% endif %}
             </ul>

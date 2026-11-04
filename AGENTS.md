@@ -14,10 +14,11 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 | Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                           |
 | Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                                   |
 | Validate links            | `bundle exec rake test` (builds the site and runs htmlproofer — the Rakefile is the single source of truth for the flags, and CI calls it)        |
-| Build CSS                 | `sass --style compressed assets/css/style.scss assets/css/style.min.css` (the site serves `style.min.css`; the `.scss` is not compiled by Jekyll) |
+| Build CSS                 | `npm run build:css` (compila `assets/css/tailwind.css` → `assets/css/style.min.css`; commite o resultado)                                           |
+| Watch CSS                 | `npm run watch:css`                                                                                                                                |
 | Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                   |
 
-There is no Ruby on this machine — run the Ruby commands inside the podman container described in `README.md` (dev server) or in the `validate-site` skill (build + link checks).
+There is no Ruby on this machine — run the Ruby commands inside the podman container described in `README.md` (dev server) or in the `validate-site` skill (build + link checks). Node/npm are needed on the host only for the Tailwind build.
 
 The htmlproofer flags (defined only in the `Rakefile`) match what CI runs: `Links`, `Scripts` and `Images` are checked (lazyload `data-src` is swapped into `src`), HTTPS is enforced, and 403/999 status codes are ignored (bot walls like winehq.org and LinkedIn). Dead legacy client domains listed in the `Rakefile` are ignored too — remove an entry when the link is updated or dropped. `baseurl: ""` is set explicitly in `_config.yml` because `jekyll-github-metadata` otherwise injects a `/pages/arianebrandao` fallback when building locally without `JEKYLL_GITHUB_TOKEN`. The `drive.google.com/open?id=1UUmS1cI...` ignore is a known-dead link in the Warframe post, pending a replacement.
 
@@ -28,7 +29,7 @@ The htmlproofer flags (defined only in the `Rakefile`) match what CI runs: `Link
 - `_posts/` — blog and portfolio posts (Markdown, see conventions below).
 - `_layouts/` — page templates (`default`, `home`, `page`, `post`, `compress`). This is the real "theme".
 - `_includes/` — reusable partials (nav, footer, social links, analytics, Disqus, etc.).
-- `assets/` — `css/` (Bulma is **vendored** as `bulma.min.css`; `style.scss` is the source and the served `style.min.css` is generated from it manually), `js/` (`lazysizes.min.js`), `images/` (post images under `assets/images/posts/<name>/`).
+- `assets/` — `css/` (`tailwind.css` is the Tailwind source; the served and committed `style.min.css` is built with `npm run build:css`), `js/` (`lazysizes.min.js`), `images/` (post images under `assets/images/posts/<name>/`).
 - Top-level pages: `index.html`, `about.md`, `contact.html`, `projects.html`, `blog/`, `tags.html`, `404.html`, `notallowed.html`.
 - `.github/workflows/ci.yml` — CI pipeline (see CI & Deployment).
 - `initpost.sh` — post scaffolding script.
@@ -85,12 +86,12 @@ comments: true
 
 ## CI & Deployment
 
-`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `bundle install` (Ruby 3.2, gems cached via `bundler-cache`), then a single `bundle exec rake test` step (`JEKYLL_GITHUB_TOKEN` set) — the Rakefile builds the site (`JEKYLL_ENV=production`) and runs htmlproofer with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. The `bundler-cache` step installs gems into `vendor/bundle` inside the workspace — `_config.yml` excludes `vendor` (and `Rakefile`, `node_modules`) because of that, otherwise Jekyll scans them as site content and the build fails. Broken links (any non-ignored status, DNS failure or timeout), missing images and non-HTTPS references fail CI — verify any external/edited URLs in posts.
+`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `npm ci` + `npm run build:css` (Node 22), a `git diff --exit-code -- assets/css/style.min.css` guard, then `bundle install` (Ruby 3.2, gems cached via `bundler-cache`) and `bundle exec rake test` (`JEKYLL_GITHUB_TOKEN` set) — the Rakefile builds the site (`JEKYLL_ENV=production`) and runs htmlproofer with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. The `bundler-cache` step installs gems into `vendor/bundle` inside the workspace — `_config.yml` excludes `vendor` (and `Rakefile`, `node_modules`, `package.json`) because of that, otherwise Jekyll scans them as site content and the build fails. Broken links (any non-ignored status, DNS failure or timeout), missing images, non-HTTPS references and a stale committed CSS fail CI — verify any external/edited URLs in posts and rerun `npm run build:css` after changing classes.
 
 ## Gotchas
 
-- **No Node tooling**: there is no `package.json`/gulp — the site builds with Bundler/Jekyll only (Bulma is vendored in `assets/css/`).
-- **Editing `style.scss` does not change the site**: Jekyll does not compile it (no front matter). Regenerate `assets/css/style.min.css` with the command in Commands and commit it.
+- **CSS is compiled and committed**: `assets/css/tailwind.css` is the source; the site serves `assets/css/style.min.css`, built with `npm run build:css` and **committed** (GitHub Pages does not run a CSS build). CI fails if the committed file is stale.
+- **Node tooling is CSS-only**: `package.json`/`node_modules` exist for Tailwind; Jekyll still builds with Bundler. Bulma was removed in favor of Tailwind utilities plus a small component layer in `tailwind.css`.
 - Changes to `_config.yml` require restarting the dev server; most other files hot-reload.
 - The `github-pages` gem pins the Jekyll/plugin versions — prefer plugins already listed in `_config.yml`.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — see `.agents/rules/conventional-commits.md` for the allowed types, scopes, and format (e.g. `docs: update about me`).

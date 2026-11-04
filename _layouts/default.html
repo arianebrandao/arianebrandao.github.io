@@ -2,7 +2,7 @@
 layout: compress
 ---
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,6 @@ layout: compress
 
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />
 
-    <link rel="stylesheet" href="{{ '/assets/css/bulma.min.css' | relative_url }}"/>
     <link rel="stylesheet" href="{{ '/assets/css/style.min.css' | relative_url }}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <script id="cookieyes" src="https://cdn-cookieyes.com/client_data/942d6eef0c71b7ddb212075f/script.js"></script>
@@ -40,28 +39,28 @@ layout: compress
   {% endif %}
 
   {% if showHeader == true %}
-    <section class="hero is-rainbow is-bold">
+    <section class="hero-rainbow text-white">
       <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="center">
+      <div class="px-6 py-12 text-center">
+        <div class="container-page">
+            <div class="flex items-center justify-center">
                 {% if site.about %}
-                    <a class="link" href="{{ site.url }}/about">
-                        <figure class="image center is-128x128">
-                          <img class="is-rounded center" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+                    <a href="{{ site.url }}/about">
+                        <figure class="h-32 w-32">
+                          <img class="h-32 w-32 rounded-full object-cover" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
                         </figure>
                     </a>
                 {% else %}
-                    <span class="link">
-                        <figure class="image center is-128x128">
-                          <img class="is-rounded center" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+                    <span>
+                        <figure class="h-32 w-32">
+                          <img class="h-32 w-32 rounded-full object-cover" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
                         </figure>
                     </span>
                 {% endif %}
             </div>
 
-            <h1 class="title">{{ site.name }}</h1>
-            <h2 class="subtitle">{{ site.bio }}</h2>
+            <h1 class="text-[2rem] font-semibold leading-[1.125] text-white">{{ site.name }}</h1>
+            <h2 class="-mt-5 mb-6 text-xl font-normal leading-tight text-white/90">{{ site.bio }}</h2>
 
             {% include social-links.html %}
 
@@ -70,8 +69,8 @@ layout: compress
 
       <!-- Hero footer: will stick at the bottom -->
       <div class="hero-foot">
-        <nav class="tabs is-boxed is-fullwidth">
-          <div class="container">
+        <nav class="mt-4">
+          <div class="container-page">
             {% include nav.html %}
           </div>
         </nav>

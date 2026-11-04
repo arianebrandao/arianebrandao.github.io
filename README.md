@@ -13,10 +13,26 @@ O site está no ar no link: [arianebrandao.github.io](https://arianebrandao.gith
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Jekyll](https://jekyllrb.com) - Jekyll é um gerador de site/blog estático
-- [GitHub Actions](https://github.com/features/actions) - CI: valida o build e os links do site a cada push/PR (o deploy é feito pelo GitHub Pages)
+- [GitHub Actions](https://github.com/features/actions) - CI: valida o build, o CSS e os links do site a cada push/PR (o deploy é feito pelo GitHub Pages)
 - [Git](https://git-scm.com/) - Controle de versionamento de códigos
-- [Bulma](https://bulma.io) - Framework de CSS
+- [Tailwind CSS](https://tailwindcss.com) - Framework de CSS
 - Javascript
+
+## CSS (Tailwind)
+
+O Jekyll não compila o CSS: o site serve `assets/css/style.min.css`, gerado a partir de
+`assets/css/tailwind.css` e **commitado** (o GitHub Pages não roda build de CSS). É preciso ter
+Node/npm no host:
+
+```bash
+npm install
+npm run build:css   # gera assets/css/style.min.css
+npm run watch:css   # durante o desenvolvimento
+```
+
+Sempre que adicionar ou alterar classes nos layouts, páginas ou includes, rode
+`npm run build:css` e commite o `style.min.css` junto. O CI falha se o CSS commitado estiver
+desatualizado.
 
 ## Como rodar localmente
 

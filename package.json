@@ -1,0 +1,15 @@
+{
+  "name": "arianebrandao.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site pessoal e blog de Ariane Brandão (Jekyll + Tailwind CSS)",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.min.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.min.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "tailwindcss": "^4.1.0"
+  }
+}

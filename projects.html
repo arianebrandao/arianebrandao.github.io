@@ -2,16 +2,16 @@
 layout: home
 title: Projetos
 ---
-<div class="container">
-    <div class="container-content">
-        <div class="blog-posts">
-            <h3 class="title is-3 has-text-centered">Alguns dos meus últimos projetos</h3>
+<div class="container-page">
+    <div class="px-4 pt-4">
+        <div class="my-[50px]">
+            <h3 class="text-center text-[2rem] font-semibold">Alguns dos meus últimos projetos</h3>
             {% for post in site.posts %}
                 {% if post.projects %}
-                    <div class="post">
-                        <h4 class="subtitle">
+                    <div class="my-[15px]">
+                        <h4 class="text-base font-normal text-body md:text-2xl">
                             <a href="{% if post.externalLink and post.externalLink != true %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
-                                <span class="tag is-light">{{ post.date | date: "%d/%m/%Y" }}</span>
+                                <span class="tag tag-light">{{ post.date | date: "%d/%m/%Y" }}</span>
                                 {{ post.title }}
                             </a>
                         </h4>

@@ -2,19 +2,14 @@
 {% raw %}
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-		if ($navbarBurgers.length > 0) {
-			$navbarBurgers.forEach( el => {
-				el.addEventListener('click', () => {
-					const target = el.dataset.target;
-					const $target = document.getElementById(target);
-					if (!$target) return;
-					el.classList.toggle('is-active');
-					$target.classList.toggle('is-active');
-					el.setAttribute('aria-expanded', el.classList.contains('is-active'));
-				});
+		document.querySelectorAll('[data-toggle-navbar]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const target = document.getElementById(button.dataset.toggleNavbar);
+				if (!target) return;
+				const isHidden = target.classList.toggle('hidden');
+				button.setAttribute('aria-expanded', String(!isHidden));
 			});
-		}
+		});
 	});
 </script>
 {% endraw %}

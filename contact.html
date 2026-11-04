@@ -2,44 +2,40 @@
 layout: page
 title: Contato
 ---
-<div class="container">
-    <div class="container-content">
-        <div class="contact">
-            <h3 class="title is-3 has-text-centered">Entre em contato</h3>
+<div class="container-page">
+    <div class="px-4 pt-4">
+        <div class="my-[50px]">
+            <h3 class="text-center text-[2rem] font-semibold">Entre em contato</h3>
 
             <form enctype="application/x-www-form-urlencoded" action="https://getform.io/f/cc08677d-ad92-4da2-a488-fdfb4916afe3" method="POST">
                 <input type="hidden" id="captchaResponse" name="g-recaptcha-response">
                 <div class="field">
-                    <label class="label" for="name">Nome</label>
-                    <p class="control has-icons-left">
-                        <input class="input" id="name" type="text" placeholder="Seu nome" name="name" required/>
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-user"></i>
+                    <label class="form-label" for="name">Nome</label>
+                    <div class="input-wrap">
+                        <input class="form-input" id="name" type="text" placeholder="Seu nome" name="name" required/>
+                        <span class="input-icon">
+                          <span class="icon icon-sm"><i class="fas fa-user"></i></span>
                         </span>
-                    </p>
+                    </div>
                 </div>
                 <div class="field">
-                    <label class="label" for="email">E-mail</label>
-                    <p class="control has-icons-left">
-                        <input class="input" id="email" type="email" placeholder="Seu email" name="email" required/>
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-envelope"></i>
+                    <label class="form-label" for="email">E-mail</label>
+                    <div class="input-wrap">
+                        <input class="form-input" id="email" type="email" placeholder="Seu email" name="email" required/>
+                        <span class="input-icon">
+                          <span class="icon icon-sm"><i class="fas fa-envelope"></i></span>
                         </span>
-                    </p>
+                    </div>
                 </div>
                 <div class="field">
-                    <label class="label" for="message">Mensagem</label>
-                    <div class="control">
-                        <textarea class="textarea" id="message" name="message" placeholder="Quanto mais detalhes, melhor entenderei sua solicitação" required></textarea>
+                    <label class="form-label" for="message">Mensagem</label>
+                    <div>
+                        <textarea class="form-textarea" id="message" name="message" placeholder="Quanto mais detalhes, melhor entenderei sua solicitação" required></textarea>
                     </div>
                 </div>
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link" type="submit">Enviar</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-link is-light" type="reset">Limpar campos</button>
-                    </div>
+                <div class="field flex flex-wrap gap-2">
+                    <button class="btn btn-link" type="submit">Enviar</button>
+                    <button class="btn btn-link-light" type="reset">Limpar campos</button>
                 </div>
             </form>
             

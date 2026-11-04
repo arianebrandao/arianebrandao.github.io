@@ -1,11 +1,9 @@
-<footer class="footer has-text-centered">
-    <div class="centered">
-        <p class="extra">
-            {{ site.name }} © {{ site.time | date: '%Y' }} <a class="link" aria-label="Feed" href="{{ site.url }}/feed.xml" onclick="window.open(this.href); return false;">
-        		<span class="icon is-small"><i class="fas fa-rss"></i></span>
-            </a>
-            <br/>Made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> (also <a rel="nofollow" href="https://bulma.io" onclick="window.open(this.href); return false;">Bulma</a> and <a rel="nofollow" href="https://jekyllrb.com/" onclick="window.open(this.href); return false;">Jekyll</a>) 
-            <br/> Hosted by <a rel="nofollow" href="https://pages.github.com/" onclick="window.open(this.href); return false;">Github Pages</a>
-        </p>
-    </div>
+<footer class="bg-[#fafafa] px-6 pb-4 pt-8 text-center">
+    <p class="whitespace-nowrap">
+        {{ site.name }} © {{ site.time | date: '%Y' }} <a aria-label="Feed" class="link" href="{{ site.url }}/feed.xml" onclick="window.open(this.href); return false;">
+            <span class="icon icon-sm"><i class="fas fa-rss"></i></span>
+        </a>
+        <br/>Made with <span class="icon icon-sm text-danger"><i class="fas fa-heart"></i></span> (also <a rel="nofollow" href="https://tailwindcss.com" onclick="window.open(this.href); return false;">Tailwind CSS</a> and <a rel="nofollow" href="https://jekyllrb.com/" onclick="window.open(this.href); return false;">Jekyll</a>)
+        <br/> Hosted by <a rel="nofollow" href="https://pages.github.com/" onclick="window.open(this.href); return false;">Github Pages</a>
+    </p>
 </footer>

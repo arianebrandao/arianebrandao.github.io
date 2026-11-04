@@ -2,43 +2,22 @@
 layout: page
 ---
 
-    <section class="hero is-rainbow is-bold">
+    <section class="hero-rainbow text-white">
       <!-- Hero head: will stick at the top -->
-      <div class="hero-head">
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar-brand">
-              <button type="button" class="navbar-burger burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbarMenuHeroA" data-target="navbarMenuHeroA">
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
-            </div>
-            <div id="navbarMenuHeroA" class="navbar-menu">
-              <div class="navbar-end">
-                <a href="{{ site.url }}/" class="navbar-item{% if page.url == '/' %} is-active{% endif %}">Home</a>
-                <a href="{{ site.url }}/blog" class="navbar-item">Blog</a>
-                <a href="{{ site.url }}/projects" class="navbar-item">Projetos e Portfólio</a>
-                <a href="{{ site.url }}/about" class="navbar-item">Sobre mim</a>
-                {% if site.contact %}
-                <a href="{{ site.url }}/contact" class="navbar-item">Faça um orçamento!</a>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </nav>
+      <div>
+        {% include navbar.html %}
       </div>
   
       <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title">{{ page.title }}</h1>
-            <h2 class="subtitle">{{ page.date | date: "%d/%m/%Y" }}</h2>
+      <div class="px-6 py-12 text-center">
+        <div class="container-page">
+            <h1 class="text-[2rem] font-semibold leading-[1.125] text-white">{{ page.title }}</h1>
+            <h2 class="-mt-5 mb-6 text-xl font-normal leading-tight text-white/90">{{ page.date | date: "%d/%m/%Y" }}</h2>
             
             {% if site.show-tags %}
-                <div class="post-tags">
+                <div class="mt-4 flex flex-wrap justify-center gap-2">
                     {% for tag in page.tags %}
-                        <a href="{{ site.url }}/tags/#{{ tag | slugify }}"><span class="tag is-rounded is-white">{{ tag }}</span></a>
+                        <a href="{{ site.url }}/tags/#{{ tag | slugify }}"><span class="tag tag-white tag-rounded">{{ tag }}</span></a>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -46,30 +25,30 @@ layout: page
       </div>
     </section>
 
-    <div class="container">
-        <div class="container-content">
+    <div class="container-page">
+        <div class="px-4 pt-4">
             {% if page.image and page.headerImage %}
-                <div class="center">
-                    <img class="title-image" src="{{ page.image }}" alt="{{ page.title }}">
+                <div class="flex items-center justify-center">
+                    <img class="max-h-[120px]" src="{{ page.image }}" alt="{{ page.title }}">
                 </div>
             {% endif %}
         
-            <div class="post">
+            <div class="prose my-[15px]">
                 {{content}}
             </div>
             
             {% if site.post-advance-links contains page.category %}
-                <div class="columns">
-                    <div class="column is-5 has-text-left">
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-12 text-left sm:col-span-5">
                         {% if page.previous.url %}
-                            <a href="{{ site.url }}{{ page.previous.url }}" class="button is-light is-small">&laquo; {{ page.previous.title }}</a>
+                            <a href="{{ site.url }}{{ page.previous.url }}" class="btn btn-light btn-small">&laquo; {{ page.previous.title }}</a>
                         {% endif %}
                     </div>
-                    <div class="column is-2">
+                    <div class="hidden sm:col-span-2 sm:block">
                     </div>
-                    <div class="column is-5 has-text-right">
+                    <div class="col-span-12 text-right sm:col-span-5">
                         {% if page.next.url %}
-                            <a href="{{ site.url }}{{ page.next.url }}" class="button is-light is-small">{{ page.next.title }} &raquo;</a>
+                            <a href="{{ site.url }}{{ page.next.url }}" class="btn btn-light btn-small">{{ page.next.title }} &raquo;</a>
                         {% endif %}
                     </div>
                 </div>

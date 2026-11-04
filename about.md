@@ -3,11 +3,11 @@ title: Sobre mim
 layout: home
 ---
 
-<div class="container">
-    <div class="container-content">
-        <div class="about">
-            <h3 class="title is-3 has-text-centered">Sobre mim</h3>
-            <p class="about-text">
+<div class="container-page">
+    <div class="px-4 pt-4">
+        <div class="my-[50px]">
+            <h3 class="text-center text-[2rem] font-semibold">Sobre mim</h3>
+            <p class="text-[1.2rem]">
                 Olá! Meu nome é Ariane, amo codar e atualmente estou estudando React/Next.js. Em 2016 conclui o ensino superior em Análise e Desenvolvimento de Sistemas.
                 <br/><br/>
                 Em meu último emprego trabalhei diariamente com diversas tecnologias, frameworks e CMS - react, html, css, javascript, typescript, php, laravel, mysql, sass, hubspot, salesforce, git, wordpress - por exemplo. Meu foco é desenvolvimento front-end usando o framework Next.js.

@@ -3,48 +3,27 @@ layout: page
 title: Tags
 ---
 
-    <section class="hero is-rainbow is-bold">
+    <section class="hero-rainbow text-white">
       <!-- Hero head: will stick at the top -->
-      <div class="hero-head">
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar-brand">
-              <button type="button" class="navbar-burger burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbarMenuHeroA" data-target="navbarMenuHeroA">
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
-            </div>
-            <div id="navbarMenuHeroA" class="navbar-menu">
-              <div class="navbar-end">
-                <a href="{{ site.url }}/" class="navbar-item{% if page.url == '/' %} is-active{% endif %}">Home</a>
-                <a href="{{ site.url }}/blog" class="navbar-item">Blog</a>
-                <a href="{{ site.url }}/projects" class="navbar-item">Projetos e Portfólio</a>
-                <a href="{{ site.url }}/about" class="navbar-item">Sobre mim</a>
-                {% if site.contact %}
-                <a href="{{ site.url }}/contact" class="navbar-item">Faça um orçamento!</a>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </nav>
+      <div>
+        {% include navbar.html %}
       </div>
   
       <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title">{{ page.title }} usadas no site</h1>
+      <div class="px-6 py-12 text-center">
+        <div class="container-page">
+            <h1 class="text-[2rem] font-semibold leading-[1.125] text-white">Tags usadas no site</h1>
 
-            <div class="site-tags">
+            <div class="mt-4">
                 {% assign tags_list = site.tags %}
 
                 {% if tags_list.first[0] == null %}
                     {% for tag in tags_list %}
-                        <a href="#{{ tag | slugify }}"><span class="tag is-white is-rounded">{{ tag }}</span></a> &nbsp;
+                        <a href="#{{ tag | slugify }}"><span class="tag tag-white tag-rounded my-1 text-base sm:text-[1.25rem]">{{ tag }}</span></a> &nbsp;
                     {% endfor %}
                 {% else %}
                     {% for tag in tags_list %}
-                        <a href="#{{ tag[0] | slugify }}"><span class="tag is-white is-rounded">{{ tag[0] }}</span></a> &nbsp;
+                        <a href="#{{ tag[0] | slugify }}"><span class="tag tag-white tag-rounded my-1 text-base sm:text-[1.25rem]">{{ tag[0] }}</span></a> &nbsp;
                     {% endfor %}
                 {% endif %}
             
@@ -54,26 +33,25 @@ title: Tags
       </div>
     </section>
     
-    <div class="container">
-        <div class="container-content">
-            <div class="tags">
+    <div class="container-page">
+        <div class="px-4 pt-4">
+            <div class="my-[50px]">
                 {% if page.image and page.headerImage %}
-                    <div class="center">
-                        <img class="title-image" src="{{ page.image }}" alt="{{ page.title }}">
+                    <div class="flex items-center justify-center">
+                        <img class="max-h-[120px]" src="{{ page.image }}" alt="{{ page.title }}">
                     </div>
                 {% endif %}
-                <div class="column">
                     
                 {% for tag in site.tags %}
-                    <h3 class="title is-3" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h3>
+                    <h3 class="text-[2rem] font-semibold" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h3>
 
-                    <div class="column">
+                    <div class="mb-6">
                         {% assign pages_list = tag[1] %}
                         {% for post in pages_list reversed %}
                             {% if post.title != null %}
-                            <h4 class="subtitle">
+                            <h4 class="text-base font-normal text-body md:text-2xl">
                                 <a href="{{ site.url }}{{ post.url }}">
-                                    <span class="tag is-light">{{ post.date | date: "%d/%m/%Y" }}</span>
+                                    <span class="tag tag-light">{{ post.date | date: "%d/%m/%Y" }}</span>
                                     {{ post.title }}
                                 </a>
                             </h4>
@@ -82,8 +60,6 @@ title: Tags
                         {% assign pages_list = nil %}
                     </div>
                 {% endfor %}
-                    
-                </div>
             </div>
         </div>
     </div>
