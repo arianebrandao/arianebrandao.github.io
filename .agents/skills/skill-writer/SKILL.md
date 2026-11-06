@@ -72,17 +72,10 @@ Description formula:
 Good: `Extract text and tables from PDF files, fill forms, merge documents. Use when working
 with PDF files or when the user mentions PDFs, forms, or document extraction.`
 
-Tool-specific extensions (`argument-hint`, `disable-model-invocation`, `user-invocable`,
-`paths`, `model`) exist but are NOT in the open standard. Other tools ignore them safely, but
-some surfaces (claude.ai upload, Skills API) reject unknown fields with a hard error. Add them
-only when the workflow genuinely needs them.
-
 ## 4. Write the body — and what TO do
 
 The body is an instruction set for an agent, not documentation for a human.
 
-- [ ] Write imperative steps, exact commands, and decision rules for edge cases
-- [ ] Include one concrete worked example — it beats paragraphs of prose
 - [ ] Respect progressive disclosure: metadata always in context (~100 tokens) → SKILL.md body
       on activation (<5k tokens recommended, <500 lines) → `references/`, `assets/`, `scripts/`
       loaded only when the body points at them
@@ -91,18 +84,10 @@ The body is an instruction set for an agent, not documentation for a human.
 - [ ] Add a table of contents at the top of any reference file longer than 100 lines
 - [ ] Make scripts self-contained, with explicit error handling and documented dependencies —
       and state clearly whether the agent should RUN (`scripts/x.sh`) or READ the script
-- [ ] Match specificity to fragility: exact script with no variation for risky operations
-      (migrations, deploys); heuristics and high freedom for judgment calls (reviews)
-- [ ] Use consistent terminology — pick one term ("endpoint") and never mix synonyms ("URL",
-      "route", "path")
 - [ ] Structure complex workflows as checklists the agent can copy and track progress with
 
 ## 5. DON'T — never do
 
-- Don't write vague names (`helper`, `utils`, `tools`, `documents`) or vague descriptions
-  (`Helps with PDFs`, `Processes data`)
-- Don't use first or second person in the description ("I can help…", "You can use…") — it is
-  injected into the system prompt; write third person
 - Don't exceed 64 chars in `name` or 1024 in `description`; no XML tags, uppercase, or
   consecutive hyphens in the name — the skill silently fails to load
 - Don't namespace the name yourself (`myorg/skillname`, `myorg:skillname`) — plugins add
@@ -111,8 +96,6 @@ The body is an instruction set for an agent, not documentation for a human.
 - Don't paste long reference material into `SKILL.md` — move it to `references/` and link it
 - Don't chain references (`SKILL.md` → `a.md` → `b.md`); agents may only preview the deep file
   and end up with incomplete information
-- Don't explain what the model already knows (what a PDF is, how pip works). Every token in the
-  body competes with conversation history
 - Don't include time-sensitive content ("before August 2025 use X, after use Y") — keep a
   "legacy patterns" section instead
 - Don't offer five alternative libraries — pick one default and name the single exception
@@ -132,9 +115,6 @@ The body is an instruction set for an agent, not documentation for a human.
    `cmd skills list` or `/skills`; most other tools need a session restart)
 3. **Trigger test**: in a FRESH session, send a prompt matching the description and confirm the
    skill activates; leftover context from authoring masks gaps
-4. **Invocation test**: invoke `/name` directly with a small task and confirm the agent follows
-   the body as written
-5. **Trim**: remove anything the agent did not need while following the instructions
 
 If the skill will be shared or committed: skills are instructions plus executable code — tell
 the consumer to review the content before trusting it.
