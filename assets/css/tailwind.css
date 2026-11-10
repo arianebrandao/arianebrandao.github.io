@@ -10,9 +10,10 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
+  --font-sans:
+    BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --color-link: #3273dc;
   --color-ink: #363636;
   --color-body: #4a4a4a;

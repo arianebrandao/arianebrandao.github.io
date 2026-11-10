@@ -8,15 +8,15 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 
 ## Commands
 
-| Purpose                   | Command                                                                                                                                           |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Install Ruby dependencies | `bundle install`                                                                                                                                  |
-| Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                           |
-| Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                                   |
-| Validate links            | `bundle exec rake test` (builds the site and runs htmlproofer — the Rakefile is the single source of truth for the flags, and CI calls it)        |
-| Build CSS                 | `npm run build:css` (compila `assets/css/tailwind.css` → `assets/css/style.min.css`; commite o resultado)                                           |
-| Watch CSS                 | `npm run watch:css`                                                                                                                                |
-| Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                   |
+| Purpose                   | Command                                                                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Install Ruby dependencies | `bundle install`                                                                                                                           |
+| Dev server                | `bundle exec jekyll serve --config _config.yml,_config-dev.yml` → http://localhost:4000                                                    |
+| Build                     | `bundle exec jekyll build` (output to `_site/`)                                                                                            |
+| Validate links            | `bundle exec rake test` (builds the site and runs htmlproofer — the Rakefile is the single source of truth for the flags, and CI calls it) |
+| Build CSS                 | `npm run build:css` (compila `assets/css/tailwind.css` → `assets/css/style.min.css`; commite o resultado)                                  |
+| Watch CSS                 | `npm run watch:css`                                                                                                                        |
+| Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                            |
 
 There is no Ruby on this machine — run the Ruby commands inside the podman container described in `README.md` (dev server) or in the `validate-site` skill (build + link checks). Node/npm are needed on the host only for the Tailwind build, in version 26 (declared in `engines` in `package.json`).
 
@@ -44,7 +44,7 @@ Posts live in `_posts/` and follow the filename pattern `YYYY-MM-DD-slug.md`. Th
 
 ```yaml
 ---
-title: 'Post title'
+title: "Post title"
 layout: post
 date: YYYY-MM-DD HH:MM
 headerImage: false
@@ -61,7 +61,7 @@ description: Short description
 
 ```yaml
 ---
-title: '[Portfólio] Project Name - Tech'
+title: "[Portfólio] Project Name - Tech"
 layout: post
 date: YYYY-MM-DD HH:MM
 tag:
@@ -71,7 +71,7 @@ image: https://arianebrandao.github.io/assets/images/posts/<name>/1.png
 headerImage: true
 projects: true
 hidden: true
-description: 'Portfólio: Project Name'
+description: "Portfólio: Project Name"
 category: project
 author: arianebrandao
 externalLink: false

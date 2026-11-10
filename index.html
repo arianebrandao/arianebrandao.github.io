@@ -2,52 +2,96 @@
 layout: home
 title: Home
 ---
+
 <div class="container-page">
-    <div class="px-4 pt-4">
-        <div class="my-[50px]">
-            <h3 class="text-center text-[2rem] font-semibold">Trabalhos e posts recentes</h3>
+  <div class="px-4 pt-4">
+    <div class="my-[50px]">
+      <h3 class="text-center text-[2rem] font-semibold">
+        Trabalhos e posts recentes
+      </h3>
 
-            {% for post in site.posts limit:5 %}
-            <div class="my-[15px]">
-                <h4 class="text-base font-normal text-body md:text-2xl">
-                    {% if post.projects %} <span class="tag tag-danger">projetos</span> {% else %} <span
-                        class="tag tag-info">blog</span> {% endif %}
-                    <a
-                        href="{% if post.externalLink and post.externalLink != true %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">
-                        {{ post.title }}
-                    </a>
-                </h4>
-            </div>
-            {% endfor %}
+      {% for post in site.posts limit:5 %}
+      <div class="my-[15px]">
+        <h4 class="text-base font-normal text-body md:text-2xl">
+          {% if post.projects %} <span class="tag tag-danger">projetos</span> {%
+          else %} <span class="tag tag-info">blog</span> {% endif %}
+          <a
+            href="{% if post.externalLink and post.externalLink != true %}{{ post.externalLink }}{% else %}{{ site.url }}{{ post.url }}{% endif %}"
+          >
+            {{ post.title }}
+          </a>
+        </h4>
+      </div>
+      {% endfor %}
 
-            <h3 class="text-center text-[2rem] font-semibold" id="highlighted-customers">Alguns clientes :)</h3>
+      <h3
+        class="text-center text-[2rem] font-semibold"
+        id="highlighted-customers"
+      >
+        Alguns clientes :)
+      </h3>
 
-            <div class="mx-auto w-full md:w-2/3">
-                <div class="autoplay customer-logo" id="clientes-carrossel">
-                    <div>
-                        <a rel="nofollow" href="https://revistabicicleta.com"
-                            onclick="window.open(this.href); return false;">
-                            <img onmouseover="mOver()" onmouseout="mOut()" alt="Revista Bicicleta"
-                                data-src="{{ site.url }}/assets/images/clientes/revista-bicicleta.png"
-                                class="lazyload" />
-                        </a>
-                        <noscript><img src="{{ '/assets/images/clientes/revista-bicicleta.png' | relative_url }}" alt="Revista Bicicleta" /></noscript>
-                    </div>
-                    <div>
-                        <a rel="nofollow" href="https://hydrowheel.com.br"
-                            onclick="window.open(this.href); return false;">
-                            <img onmouseover="mOver()" onmouseout="mOut()" alt="HydroWheel"
-                                data-src="{{ site.url }}/assets/images/clientes/hydrowheel.png" class="lazyload" />
-                        </a>
-                        <noscript><img src="{{ '/assets/images/clientes/hydrowheel.png' | relative_url }}" alt="HydroWheel" /></noscript>
-                    </div>
-                </div>
-
-                <div class="mt-2 flex justify-center">
-                    <button type="button" id="carousel-toggle" class="btn btn-small" aria-controls="clientes-carrossel">Pausar carrossel</button>
-                </div>
-            </div>
-
+      <div class="mx-auto w-full md:w-2/3">
+        <div class="autoplay customer-logo" id="clientes-carrossel">
+          <div>
+            <a
+              rel="nofollow"
+              href="https://revistabicicleta.com"
+              onclick="
+                window.open(this.href);
+                return false;
+              "
+            >
+              <img
+                onmouseover="mOver()"
+                onmouseout="mOut()"
+                alt="Revista Bicicleta"
+                data-src="{{ site.url }}/assets/images/clientes/revista-bicicleta.png"
+                class="lazyload"
+              />
+            </a>
+            <noscript
+              ><img
+                src="{{ '/assets/images/clientes/revista-bicicleta.png' | relative_url }}"
+                alt="Revista Bicicleta"
+            /></noscript>
+          </div>
+          <div>
+            <a
+              rel="nofollow"
+              href="https://hydrowheel.com.br"
+              onclick="
+                window.open(this.href);
+                return false;
+              "
+            >
+              <img
+                onmouseover="mOver()"
+                onmouseout="mOut()"
+                alt="HydroWheel"
+                data-src="{{ site.url }}/assets/images/clientes/hydrowheel.png"
+                class="lazyload"
+              />
+            </a>
+            <noscript
+              ><img
+                src="{{ '/assets/images/clientes/hydrowheel.png' | relative_url }}"
+                alt="HydroWheel"
+            /></noscript>
+          </div>
         </div>
+
+        <div class="mt-2 flex justify-center">
+          <button
+            type="button"
+            id="carousel-toggle"
+            class="btn btn-small"
+            aria-controls="clientes-carrossel"
+          >
+            Pausar carrossel
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
