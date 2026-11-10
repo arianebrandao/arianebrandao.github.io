@@ -18,7 +18,7 @@ Personal portfolio and blog of Ariane Brandão (front-end developer / software e
 | Watch CSS                 | `npm run watch:css`                                                                                                                                |
 | Scaffold a new post       | `./initpost.sh -c "Post Title"`                                                                                                                   |
 
-There is no Ruby on this machine — run the Ruby commands inside the podman container described in `README.md` (dev server) or in the `validate-site` skill (build + link checks). Node/npm are needed on the host only for the Tailwind build.
+There is no Ruby on this machine — run the Ruby commands inside the podman container described in `README.md` (dev server) or in the `validate-site` skill (build + link checks). Node/npm are needed on the host only for the Tailwind build, in version 26 (declared in `engines` in `package.json`).
 
 The htmlproofer flags (defined only in the `Rakefile`) match what CI runs: `Links`, `Scripts` and `Images` are checked (lazyload `data-src` is swapped into `src`), HTTPS is enforced, and 403/999 status codes are ignored (bot walls like winehq.org and LinkedIn). Dead legacy client domains listed in the `Rakefile` are ignored too — remove an entry when the link is updated or dropped. `baseurl: ""` is set explicitly in `_config.yml` because `jekyll-github-metadata` otherwise injects a `/pages/arianebrandao` fallback when building locally without `JEKYLL_GITHUB_TOKEN`. The `drive.google.com/open?id=1UUmS1cI...` ignore is a known-dead link in the Warframe post, pending a replacement.
 
@@ -86,7 +86,7 @@ comments: true
 
 ## CI & Deployment
 
-`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `npm ci` + `npm run build:css` (Node 22), a `git diff --exit-code -- assets/css/style.min.css` guard, then `bundle install` (Ruby 3.2, gems cached via `bundler-cache`) and `bundle exec rake test` (`JEKYLL_GITHUB_TOKEN` set) — the Rakefile builds the site (`JEKYLL_ENV=production`) and runs htmlproofer with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. The `bundler-cache` step installs gems into `vendor/bundle` inside the workspace — `_config.yml` excludes `vendor` (and `Rakefile`, `node_modules`, `package.json`) because of that, otherwise Jekyll scans them as site content and the build fails. Broken links (any non-ignored status, DNS failure or timeout), missing images, non-HTTPS references and a stale committed CSS fail CI — verify any external/edited URLs in posts and rerun `npm run build:css` after changing classes.
+`.github/workflows/ci.yml` (GitHub Actions) runs on every push to `main` and on pull requests: `npm ci` + `npm run build:css` (Node 26), a `git diff --exit-code -- assets/css/style.min.css` guard, then `bundle install` (Ruby 3.2, gems cached via `bundler-cache`) and `bundle exec rake test` (`JEKYLL_GITHUB_TOKEN` set) — the Rakefile builds the site (`JEKYLL_ENV=production`) and runs htmlproofer with the flags documented in Commands. There is no deploy step — GitHub Pages builds and serves the site natively on push to `main`. The `bundler-cache` step installs gems into `vendor/bundle` inside the workspace — `_config.yml` excludes `vendor` (and `Rakefile`, `node_modules`, `package.json`) because of that, otherwise Jekyll scans them as site content and the build fails. Broken links (any non-ignored status, DNS failure or timeout), missing images, non-HTTPS references and a stale committed CSS fail CI — verify any external/edited URLs in posts and rerun `npm run build:css` after changing classes.
 
 ## Gotchas
 
@@ -95,6 +95,8 @@ comments: true
 - Changes to `_config.yml` require restarting the dev server; most other files hot-reload.
 - The `github-pages` gem pins the Jekyll/plugin versions — prefer plugins already listed in `_config.yml`.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — see `.agents/rules/conventional-commits.md` for the allowed types, scopes, and format (e.g. `docs: update about me`).
+- **Never commit, push, tag or open a PR without an explicit request** — finishing a plan, passing tests or closing all TODOs is not authorization. Stop after validating and let the diff be reviewed. See `.agents/rules/git-workflow.md`.
+- **One branch per plan**: create it (`git switch -c <type>/<slug>`) before the first edit when implementing a plan; if work started on `main` by mistake, move it with `git switch -c` instead of committing.
 - **Commits are delegated to the `commit-writer` subagent** (`.commandcode/agents/commit-writer.md`) — whenever the user asks to commit, hand the task to it instead of running `git commit` yourself.
 
 ## Learning Loop
