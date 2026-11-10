@@ -13,6 +13,7 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.0",
     "@tailwindcss/typography": "^0.5.16",
+    "prettier": "3.9.10",
     "tailwindcss": "^4.1.0"
   },
   "overrides": {
