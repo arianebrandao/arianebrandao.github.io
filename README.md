@@ -22,7 +22,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O Jekyll não compila o CSS: o site serve `assets/css/style.min.css`, gerado a partir de
 `assets/css/tailwind.css` e **commitado** (o GitHub Pages não roda build de CSS). É preciso ter
-Node/npm no host:
+Node/npm no host, na **versão 26**:
 
 ```bash
 npm install

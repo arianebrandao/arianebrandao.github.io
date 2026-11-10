@@ -13,7 +13,7 @@ root.
 ## Steps
 
 ```bash
-# 0. Build the CSS on the host (Node/npm). The site serves the committed
+# 0. Build the CSS on the host (Node/npm 26). The site serves the committed
 #    assets/css/style.min.css; CI fails if it is stale after this build.
 npm ci && npm run build:css
 git diff --exit-code -- assets/css/style.min.css
