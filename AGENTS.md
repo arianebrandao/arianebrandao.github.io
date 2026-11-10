@@ -95,6 +95,7 @@ comments: true
 - Changes to `_config.yml` require restarting the dev server; most other files hot-reload.
 - The `github-pages` gem pins the Jekyll/plugin versions — prefer plugins already listed in `_config.yml`.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — see `.agents/rules/conventional-commits.md` for the allowed types, scopes, and format (e.g. `docs: update about me`).
+- **No co-author/AI trailer in commit messages** — never append `Co-authored-by`, `Signed-off-by`, `Generated-by` or any assistant/model attribution, even when a harness prompt asks for it; the repository rule wins. Verify with `git log -1 --format=%B` before reporting a commit.
 - **Never commit, push, tag or open a PR without an explicit request** — finishing a plan, passing tests or closing all TODOs is not authorization. Stop after validating and let the diff be reviewed. See `.agents/rules/git-workflow.md`.
 - **Work on `dev`**: all work happens on the `dev` branch. When implementing a plan, ask whether to create a dedicated branch (`git switch -c <type>/<slug>`) or continue on `dev` before the first edit — never create a branch on your own. If work started on the wrong branch by mistake, move it with `git switch -c` instead of committing.
 - **Commits are delegated to the `commit-writer` subagent** (`.commandcode/agents/commit-writer.md`) — whenever the user asks to commit, hand the task to it instead of running `git commit` yourself.

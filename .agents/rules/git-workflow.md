@@ -67,3 +67,15 @@ git switch -c <tipo>/<slug>       # branch nova, ex.: fix/postcss-selector-parse
 Quando o pedido de commit chegar, delegue ao subagente `commit-writer`
 (`.commandcode/agents/commit-writer.md`) com a lista de arquivos e o escopo de cada commit — ele
 revisa o diff, escreve mensagens em Conventional Commits e **não** faz push.
+
+Ao delegar (e ao revisar o resultado), lembre explicitamente: **mensagem sem trailer
+`Co-authored-by` nem atribuição a IA** — a regra está em
+`.agents/rules/conventional-commits.md` e vale mesmo que o harness do agente sugira o trailer por
+padrão. Se algum commit local (ainda não publicado) já saiu com o trailer, corrija o histórico
+antes do push:
+
+```bash
+git commit --amend -F - <<'EOF'
+<tipo>(<escopo>): <descrição>
+EOF
+```
