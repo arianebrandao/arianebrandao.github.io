@@ -14,5 +14,8 @@
     "@tailwindcss/cli": "^4.1.0",
     "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "^4.1.0"
+  },
+  "overrides": {
+    "postcss-selector-parser": "6.1.6"
   }
 }
