@@ -8,6 +8,7 @@
 				if (!target) return;
 				const isHidden = target.classList.toggle('hidden');
 				button.setAttribute('aria-expanded', String(!isHidden));
+				button.setAttribute('aria-label', isHidden ? 'Abrir menu' : 'Fechar menu');
 			});
 		});
 	});
@@ -29,13 +30,30 @@
 			}
 			
 			$(document).ready(function(){
-				$('.autoplay').slick({
+				const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const $carousel = $('.autoplay');
+				let playing = !reduceMotion;
+
+				$carousel.slick({
 				  slidesToShow: 4,
 				  slidesToScroll: 1,
-				  autoplay: true,
+				  autoplay: playing,
 				  autoplaySpeed: 2000,
 				  arrows: false,
 				});
+
+				const toggle = document.getElementById('carousel-toggle');
+				if (toggle) {
+				  const sync = () => {
+				    toggle.textContent = playing ? 'Pausar carrossel' : 'Reproduzir carrossel';
+				  };
+				  sync();
+				  toggle.addEventListener('click', () => {
+				    playing = !playing;
+				    $carousel.slick(playing ? 'slickPlay' : 'slickPause');
+				    sync();
+				  });
+				}
 			});
 		</script>
 	{% endraw %}

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Tags
 ---
 
@@ -33,6 +33,7 @@ title: Tags
       </div>
     </section>
     
+    <main id="conteudo" tabindex="-1">
     <div class="container-page">
         <div class="px-4 pt-4">
             <div class="my-[50px]">
@@ -43,18 +44,18 @@ title: Tags
                 {% endif %}
                     
                 {% for tag in site.tags %}
-                    <h3 class="text-[2rem] font-semibold" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h3>
+                    <h2 class="text-[2rem] font-semibold" id="{{ tag[0] | slugify }}">#{{ tag[0] }}</h2>
 
                     <div class="mb-6">
                         {% assign pages_list = tag[1] %}
                         {% for post in pages_list reversed %}
                             {% if post.title != null %}
-                            <h4 class="text-base font-normal text-body md:text-2xl">
+                            <h3 class="text-base font-normal text-body md:text-2xl">
                                 <a href="{{ site.url }}{{ post.url }}">
                                     <span class="tag tag-light">{{ post.date | date: "%d/%m/%Y" }}</span>
                                     {{ post.title }}
                                 </a>
-                            </h4>
+                            </h3>
                             {% endif %}
                         {% endfor %}
                         {% assign pages_list = nil %}
@@ -63,3 +64,6 @@ title: Tags
             </div>
         </div>
     </div>
+    </main>
+
+{% include footer.html %}

@@ -23,7 +23,7 @@ title: Home
             <h3 class="text-center text-[2rem] font-semibold" id="highlighted-customers">Alguns clientes :)</h3>
 
             <div class="mx-auto w-full md:w-2/3">
-                <div class="autoplay customer-logo">
+                <div class="autoplay customer-logo" id="clientes-carrossel">
                     <div>
                         <a rel="nofollow" href="https://revistabicicleta.com"
                             onclick="window.open(this.href); return false;">
@@ -41,6 +41,10 @@ title: Home
                         </a>
                         <noscript><img src="{{ '/assets/images/clientes/hydrowheel.png' | relative_url }}" alt="HydroWheel" /></noscript>
                     </div>
+                </div>
+
+                <div class="mt-2 flex justify-center">
+                    <button type="button" id="carousel-toggle" class="btn btn-small" aria-controls="clientes-carrossel">Pausar carrossel</button>
                 </div>
             </div>
 

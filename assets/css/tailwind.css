@@ -99,6 +99,25 @@
     outline: 2px solid var(--color-link);
     outline-offset: 2px;
   }
+
+  .hero-rainbow :focus-visible {
+    outline-color: #fff;
+  }
+
+  [id] {
+    scroll-margin-top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer components {
@@ -123,6 +142,7 @@
 
   .btn {
     @apply inline-flex cursor-pointer items-center justify-center gap-1 whitespace-nowrap rounded border border-[#dbdbdb] bg-white px-4 text-base text-ink transition-colors;
+    min-height: 2.75rem;
     padding-bottom: calc(0.5em - 1px);
     padding-top: calc(0.5em - 1px);
   }
@@ -181,9 +201,43 @@
   }
 
   .btn-small {
-    border-radius: 2px;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    max-width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    white-space: normal;
+  }
+
+  .icon-link {
+    position: relative;
+  }
+
+  .icon-link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -4rem;
+    left: 1rem;
+    z-index: 100;
+    border: 2px solid var(--color-link);
+    border-radius: 4px;
+    background-color: #fff;
+    color: #1a56b8;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 
   .tag {
@@ -325,9 +379,16 @@
 }
 
 .hero-rainbow {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rainbow {
+    animation: gradientBG 15s ease infinite;
+  }
 }
 
 .prose {
@@ -404,7 +465,7 @@
 }
 
 .caption {
-  color: #aaa;
+  color: #595959;
   font-size: 0.9rem;
   font-weight: 300;
   left: 0;
@@ -423,7 +484,7 @@
 }
 
 .breaker::before {
-  color: #aaa;
+  color: #767676;
   content: "• • •";
   display: block;
   letter-spacing: 4px;

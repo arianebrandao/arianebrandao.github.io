@@ -32,6 +32,7 @@ layout: compress
     {% endif %}
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   {% assign showHeader = false %}
   <!-- AQUI DEFINE AS PAGINAS QUE O HERO VAI APARECER -->
   {% if page.title == "Home" or page.title == "Blog" or page.title == "Projetos" or page.title == "Sobre mim" or page.title == "Contato" %}
@@ -69,7 +70,7 @@ layout: compress
 
       <!-- Hero footer: will stick at the bottom -->
       <div class="hero-foot">
-        <nav class="mt-4">
+        <nav class="mt-4" aria-label="Navegação principal">
           <div class="container-page">
             {% include nav.html %}
           </div>

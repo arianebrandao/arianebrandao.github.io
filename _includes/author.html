@@ -6,20 +6,20 @@
             </figure>
         </div>
         <div class="text-center md:col-span-10 md:text-left">
-            <h4 class="text-2xl font-semibold text-ink mb-1">{{ site.authors[page.author].name }}</h4>
-            <h5 class="text-xl font-normal text-body">{{ site.authors[page.author].bio }}</h5>
-            
+            <h2 class="text-2xl font-semibold text-ink mb-1">{{ site.authors[page.author].name }}</h2>
+            <p class="text-xl font-normal text-body">{{ site.authors[page.author].bio }}</p>
+
             <div class="mt-4 flex flex-wrap justify-center gap-2 md:justify-start">
                 {% if site.authors[page.author].twitter %}
-                <a class="btn btn-small btn-info" href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }} - {{ page.title }} by @{{ site.authors[page.author].twitter }}">
-                    <span class="icon icon-sm"><i class="fab fa-twitter"></i></span>
+                <a class="btn btn-small btn-info" aria-label="Compartilhar no Twitter" href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }} - {{ page.title }} by @{{ site.authors[page.author].twitter }}">
+                    <span class="icon icon-sm" aria-hidden="true"><i class="fab fa-twitter" aria-hidden="true"></i></span>
                     <span>Tweetar</span>
                 </a>
                 {% endif %}
-                <a class="btn btn-small btn-link" href="javascript:void(0)" onclick="window.open('https://facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">
-                    <span class="icon icon-sm"><i class="fab fa-facebook-square"></i></span>
+                <button type="button" class="btn btn-small btn-link" onclick="window.open('https://facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">
+                    <span class="icon icon-sm" aria-hidden="true"><i class="fab fa-facebook-square" aria-hidden="true"></i></span>
                     <span>Compartilhar</span>
-                </a>
+                </button>
             </div>
         </div>
     </div>

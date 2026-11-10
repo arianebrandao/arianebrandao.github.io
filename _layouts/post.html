@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 ---
 
     <section class="hero-rainbow text-white">
@@ -12,7 +12,7 @@ layout: page
       <div class="px-6 py-12 text-center">
         <div class="container-page">
             <h1 class="text-[2rem] font-semibold leading-[1.125] text-white">{{ page.title }}</h1>
-            <h2 class="-mt-5 mb-6 text-xl font-normal leading-tight text-white/90">{{ page.date | date: "%d/%m/%Y" }}</h2>
+            <p class="-mt-5 mb-6 text-xl font-normal leading-tight text-white/90">{{ page.date | date: "%d/%m/%Y" }}</p>
             
             {% if site.show-tags %}
                 <div class="mt-4 flex flex-wrap justify-center gap-2">
@@ -25,6 +25,7 @@ layout: page
       </div>
     </section>
 
+    <main id="conteudo" tabindex="-1">
     <div class="container-page">
         <div class="px-4 pt-4">
             {% if page.image and page.headerImage %}
@@ -67,3 +68,6 @@ layout: page
             {% endif %}
         </div>
     </div>
+    </main>
+
+{% include footer.html %}

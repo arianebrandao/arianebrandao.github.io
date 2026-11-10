@@ -1,9 +1,9 @@
 <footer class="bg-[#fafafa] px-6 pb-4 pt-8 text-center">
-    <p class="whitespace-nowrap">
-        {{ site.name }} © {{ site.time | date: '%Y' }} <a aria-label="Feed" class="link" href="{{ site.url }}/feed.xml" onclick="window.open(this.href); return false;">
-            <span class="icon icon-sm"><i class="fas fa-rss"></i></span>
+    <p>
+        {{ site.name }} © {{ site.time | date: '%Y' }} <a aria-label="Feed RSS" class="inline-flex items-center p-1.5" href="{{ site.url }}/feed.xml" onclick="window.open(this.href); return false;">
+            <span class="icon icon-sm" aria-hidden="true"><i class="fas fa-rss" aria-hidden="true"></i></span>
         </a>
-        <br/>Made with <span class="icon icon-sm text-danger"><i class="fas fa-heart"></i></span> (also <a rel="nofollow" href="https://tailwindcss.com" onclick="window.open(this.href); return false;">Tailwind CSS</a> and <a rel="nofollow" href="https://jekyllrb.com/" onclick="window.open(this.href); return false;">Jekyll</a>)
+        <br/>Made with <span class="icon icon-sm text-danger" aria-hidden="true"><i class="fas fa-heart" aria-hidden="true"></i></span> (also <a rel="nofollow" href="https://tailwindcss.com" onclick="window.open(this.href); return false;">Tailwind CSS</a> and <a rel="nofollow" href="https://jekyllrb.com/" onclick="window.open(this.href); return false;">Jekyll</a>)
         <br/> Hosted by <a rel="nofollow" href="https://pages.github.com/" onclick="window.open(this.href); return false;">Github Pages</a>
     </p>
 </footer>
