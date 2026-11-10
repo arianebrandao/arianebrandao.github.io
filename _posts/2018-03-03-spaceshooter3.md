@@ -29,6 +29,6 @@ Adicionei algumas funcionalidades, por exemplo:
 * Mecânica de controle da nave
 
 
-Link do apk para android: <https://github.com/arianebrandao/SpaceShooter3/blob/master/built/spaceshooter3.apk>
+Link do apk para android: <https://raw.githubusercontent.com/arianebrandao/SpaceShooter3/master/built/spaceshooter3.apk>
 
 Link do github: <https://github.com/arianebrandao/SpaceShooter3>

@@ -22,7 +22,10 @@ task :test do
     # The Drive ignore is a known-dead link in the Warframe post, pending a replacement.
     ignore_urls: dead_urls + [%r{\Ahttps://drive\.google\.com/open\?id=1UUmS1cI}],
     # Lazyload images carry the real path in data-src
-    swap_attributes: { "img" => ["data-src", "src"] }
+    swap_attributes: { "img" => ["data-src", "src"] },
+    # Menos conexões simultâneas contra o github.com: o padrão (50) dispara o
+    # rate limit do GitHub e devolve 503 intermitente para tráfego anônimo.
+    hydra: { max_concurrency: 10 }
   }).run
 end
 
