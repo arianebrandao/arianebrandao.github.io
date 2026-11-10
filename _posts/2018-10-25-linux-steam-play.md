@@ -4,13 +4,12 @@ layout: post
 date: 2018-10-25 15:30
 headerImage: false
 tag:
-- linux
-- games
-- steam
+  - linux
+  - games
+  - steam
 category: blog
 author: arianebrandao
 description: Linux - configurando a Steam Play para rodar jogos nativamente
-
 ---
 
 ### Sobre a Steam Play para Linux
@@ -18,16 +17,15 @@ description: Linux - configurando a Steam Play para rodar jogos nativamente
 A grande novidade na Steam (ainda em beta) é a inclusão de uma versão modificada do [Wine](https://www.winehq.org), chamada **Proton**, com isso a ferramenta passa a oferecer compatibilidade para os jogos do Windows.
 Algumas das melhorias:
 
-* Jogos do Windows que atualmente não têm versão para Linux poderão agora ser completamente instalados e iniciados diretamente dos clientes Steam para Linux com Steamworks nativo e suporte ao OpenVR.
-* As implementações do DirectX 11 e 12 agora são baseadas em Vulkan, resultando em um jogo com melhor compatibilidade e menor impacto de desempenho.
-* O suporte à tela cheia também foi aperfeiçoado: jogos em tela cheia serão expandidos para a exibição desejada sem interferir com a resolução da tela nativa ou exigindo o uso de uma área de trabalho virtual.
-* Suporte a controle de jogos melhorado: os jogos irão reconhecer todos os controles compatíveis com o Steam. Espere uma compatibilidade de controle mais inovadora do que a da versão original do jogo.
-* O desempenho de jogos multi-segmentados também foi aprimorado ao compará-lo com a versão básica do Wine.
-
+- Jogos do Windows que atualmente não têm versão para Linux poderão agora ser completamente instalados e iniciados diretamente dos clientes Steam para Linux com Steamworks nativo e suporte ao OpenVR.
+- As implementações do DirectX 11 e 12 agora são baseadas em Vulkan, resultando em um jogo com melhor compatibilidade e menor impacto de desempenho.
+- O suporte à tela cheia também foi aperfeiçoado: jogos em tela cheia serão expandidos para a exibição desejada sem interferir com a resolução da tela nativa ou exigindo o uso de uma área de trabalho virtual.
+- Suporte a controle de jogos melhorado: os jogos irão reconhecer todos os controles compatíveis com o Steam. Espere uma compatibilidade de controle mais inovadora do que a da versão original do jogo.
+- O desempenho de jogos multi-segmentados também foi aprimorado ao compará-lo com a versão básica do Wine.
 
 ### Passos para usar a Steam Play
 
-Primeiramente é necessário usar a versão beta da Steam, para fazer isso vá no **menu Steam > Configurações > Steam Play** e ative as opções **"Enable Steam Play for supported titles" e "Enable Steam Play for all titles", em  "Compatibillity tool" selecione a versão beta mais atual** disponível (Proton 3.16-3 Beta até o momento).
+Primeiramente é necessário usar a versão beta da Steam, para fazer isso vá no **menu Steam > Configurações > Steam Play** e ative as opções **"Enable Steam Play for supported titles" e "Enable Steam Play for all titles", em "Compatibillity tool" selecione a versão beta mais atual** disponível (Proton 3.16-3 Beta até o momento).
 
 <p align="center"><img data-src="{{ site.url }}/assets/images/posts/linux-steam-play/1.png" class="lazyload" alt="Screenshot" /></p>
 <noscript>

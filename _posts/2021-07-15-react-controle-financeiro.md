@@ -3,11 +3,11 @@ title: "[Portfólio React] Controle Financeiro - dt.money"
 layout: post
 date: 2021-07-15 14:00
 tag:
-- projetos
-- portfolio
-- react
-- typescript
-- mirage js
+  - projetos
+  - portfolio
+  - react
+  - typescript
+  - mirage js
 image: https://arianebrandao.github.io/assets/images/posts/react-controle-financeiro/logo.svg
 headerImage: true
 projects: true
@@ -39,14 +39,14 @@ Auxilia no controle financeiro, para cadastrar lucros/despesas.
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-* React
-* TypeScript
-* Axios
-* MirageJs
+- React
+- TypeScript
+- Axios
+- MirageJs
 
 ### Layout
 
-Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/0xmu9mj2TJYoIOubBFWsk5/dtmoney-Ignite-(Copy)). É necessário ter conta no [Figma](https://figma.com/) para acessá-lo.
+Você pode visualizar o layout do projeto através [desse link](<https://www.figma.com/file/0xmu9mj2TJYoIOubBFWsk5/dtmoney-Ignite-(Copy)>). É necessário ter conta no [Figma](https://figma.com/) para acessá-lo.
 
 <div class="breaker"></div>
 
@@ -56,7 +56,6 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 </noscript>
 <figcaption class="caption">App Controle Financeiro</figcaption>
 <div class="breaker"></div>
-
 
 Repositório no Github: <https://github.com/arianebrandao/react-controle-financeiro>
 

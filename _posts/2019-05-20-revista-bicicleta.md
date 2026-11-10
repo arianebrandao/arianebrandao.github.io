@@ -3,8 +3,8 @@ title: "[Portfólio] Revista Bicicleta - Wordpress"
 layout: post
 date: 2019-05-20 18:00
 tag:
-- projetos
-- portfolio
+  - projetos
+  - portfolio
 image: https://arianebrandao.github.io/assets/images/posts/revista-bicicleta/1.png
 headerImage: true
 projects: true
@@ -20,19 +20,18 @@ Olá!
 
 A Revista Bicicleta é o maior site wordpress que tive e tenho o prazer em trabalhar. Atualmente eu presto consultoria e manutenção do site.
 
-
 ### O que eu fiz
 
-* Redirecionamento do endereço antigo (revistabicicleta.com.br) para o endereço novo
-* Configuração de Cache
-* Otimização de arquivos
-* Otimização de imagens (tinham mais de 3 mil imagens)
-* Configuração de SEO (Seach Engine Optimization)
-* Pequenas alterações no template do tema
-* Adições de espaços para ADS
-* Pequenas alterações no CSS para os novos espaços adicionados no template
-* Criada página com as Edições da Revista Bicicleta
-* Correção do SSL
+- Redirecionamento do endereço antigo (revistabicicleta.com.br) para o endereço novo
+- Configuração de Cache
+- Otimização de arquivos
+- Otimização de imagens (tinham mais de 3 mil imagens)
+- Configuração de SEO (Seach Engine Optimization)
+- Pequenas alterações no template do tema
+- Adições de espaços para ADS
+- Pequenas alterações no CSS para os novos espaços adicionados no template
+- Criada página com as Edições da Revista Bicicleta
+- Correção do SSL
 
 <div class="breaker"></div>
 
@@ -49,7 +48,6 @@ A Revista Bicicleta é o maior site wordpress que tive e tenho o prazer em traba
 </noscript>
 <figcaption class="caption">Edições da Revista Bicicleta</figcaption>
 <div class="breaker"></div>
-
 
 Site no ar: <https://revistabicicleta.com>
 

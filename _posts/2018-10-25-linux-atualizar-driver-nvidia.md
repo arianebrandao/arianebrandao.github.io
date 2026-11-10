@@ -4,11 +4,10 @@ layout: post
 date: 2018-10-25 12:53
 headerImage: false
 tag:
-- linux
+  - linux
 category: blog
 author: arianebrandao
 description: Linux - como atualizar o driver Nvidia para a versão 396+
-
 ---
 
 ### Como atualizar o driver Nvidia para a versão 396+
@@ -24,7 +23,7 @@ sudo apt install nvidia-dkms-396
 sudo apt install nvidia-driver-396
 sudo apt install nvidia-utils-396
 sudo apt install xserver-xorg-video-nvidia-396
-```  
+```
 
 **É preciso reiniciar o pc após esse processo.**
 
