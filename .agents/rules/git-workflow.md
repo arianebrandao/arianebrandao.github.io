@@ -1,5 +1,5 @@
 ---
-description: Fluxo de branches e autorização de commits neste repositório — nunca commitar sem pedido explícito e criar uma branch por plano.
+description: Fluxo de branches e autorização de commits neste repositório — trabalhar na branch dev, perguntar antes de criar branch nova e nunca commitar sem pedido explícito.
 globs: **/*
 alwaysApply: true
 ---
@@ -35,25 +35,47 @@ git restore --staged .      # opcional: volta tudo para "modifications"
 
 `reset --soft` é sempre seguro: o commit continua acessível em `git reflog`.
 
-## Uma branch por plano
+## Branch de trabalho: `dev`
 
-Ao implementar um plano (aprovado ou não), crie e mude para uma branch **antes** da primeira
-edição:
+Todo trabalho acontece na branch `dev`. Uma branch própria só existe quando a Ariane pede.
+
+### Ao implementar um plano: pergunte antes
+
+Antes da primeira edição de qualquer plano (aprovado ou não), pergunte qual branch usar:
+
+- **Continuar em `dev`** — padrão para trabalho do dia a dia.
+- **Criar branch nova** — quando o plano vira um commit/PR isolado.
+
+Sem resposta, continue em `dev`. **Não crie branch por conta própria** e não troque de branch no
+meio da implementação.
 
 ```bash
-git switch -c <tipo>/<slug-do-plano>   # ex.: chore/dependabot-rubyzip-node26
+git switch dev                    # continuar na dev
+git switch -c <tipo>/<slug>       # branch nova, ex.: fix/postcss-selector-parser-override
 ```
 
-- O nome segue o tipo do commit esperado (`feat`, `fix`, `chore`, `docs`...), conforme
+- O nome da branch nova segue o tipo do commit esperado (`feat`, `fix`, `chore`, `docs`...), conforme
   `.agents/rules/conventional-commits.md`.
-- Comece a partir da `main` limpa (`git switch main && git pull` quando houver remoto).
-- Se a implementação começou em `main` por engano, mova o trabalho sem commitar:
+- Branch nova sai da `dev` atualizada (`git switch dev && git pull` quando houver upstream).
+- Se a implementação começou na branch errada por engano, mova o trabalho sem commitar:
   `git switch -c <tipo>/<slug>` mantém a working tree intacta.
-- Trabalho que não vem de um plano (ajuste pontual pedido direto) pode ficar em `main`, mas o
-  pedido de commit continua sendo necessário.
+- Ajuste pontual pedido direto (sem plano) fica na `dev`, mas o pedido de commit continua sendo
+  necessário.
 
 ## O commit em si vai para o commit-writer
 
 Quando o pedido de commit chegar, delegue ao subagente `commit-writer`
 (`.commandcode/agents/commit-writer.md`) com a lista de arquivos e o escopo de cada commit — ele
 revisa o diff, escreve mensagens em Conventional Commits e **não** faz push.
+
+Ao delegar (e ao revisar o resultado), lembre explicitamente: **mensagem sem trailer
+`Co-authored-by` nem atribuição a IA** — a regra está em
+`.agents/rules/conventional-commits.md` e vale mesmo que o harness do agente sugira o trailer por
+padrão. Se algum commit local (ainda não publicado) já saiu com o trailer, corrija o histórico
+antes do push:
+
+```bash
+git commit --amend -F - <<'EOF'
+<tipo>(<escopo>): <descrição>
+EOF
+```

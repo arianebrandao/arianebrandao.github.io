@@ -3,9 +3,9 @@ title: "[Portfólio] KimCrível - Wordpress"
 layout: post
 date: 2019-02-10 19:00
 tag:
-- projetos
-- portfolio
-- workana
+  - projetos
+  - portfolio
+  - workana
 image: https://arianebrandao.github.io/assets/images/posts/kimcrivel/1.png
 headerImage: true
 projects: true
@@ -21,17 +21,15 @@ Olá!
 
 Esse é mais um trabalho na plataforma Wordpress que eu tive o prazer de fazer, por meio do Workana.
 
-
 ### O que eu fiz
 
-* Configurações na hospedagem para a nova instalação do Wordpress
-* Criado e-mail e conta ftp na hospedagem
-* Instalação e configuração do tema escolhido pelo cliente
-* Corrigido menu
-* Correção de um bug no template que não estava mostrando a categoria dos posts
-* Configurado feed do Instagram
-* Instalado e configurado o plugin para backup do sistema
-
+- Configurações na hospedagem para a nova instalação do Wordpress
+- Criado e-mail e conta ftp na hospedagem
+- Instalação e configuração do tema escolhido pelo cliente
+- Corrigido menu
+- Correção de um bug no template que não estava mostrando a categoria dos posts
+- Configurado feed do Instagram
+- Instalado e configurado o plugin para backup do sistema
 
 <div class="breaker"></div>
 

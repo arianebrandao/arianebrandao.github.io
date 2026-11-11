@@ -4,13 +4,12 @@ layout: post
 date: 2026-02-18 10:48
 headerImage: false
 tag:
-- umidigi
-- umidigi power 3
-- lineageos
+  - umidigi
+  - umidigi power 3
+  - lineageos
 category: blog
 author: arianebrandao
 description: Como instalar o LineageOS no UMIDIGI Power 3
-
 ---
 
 ## Como instalar o LineageOS no UMIDIGI Power 3
@@ -22,6 +21,7 @@ Não encontrei uma versão "oficial" do LineageOS feita especificamente para o m
 ### Pré-requisitos
 
 Antes de começar, você precisará de:
+
 1. Backup: Salve suas fotos, contatos e arquivos (você vai perder tudo).
 2. Computador: Com os drivers USB do Google, SDK Plataform Tools (ADB e Fastboot) instalados.
 3. Imagem do LineageOS compatível com seu dispositivo.
@@ -32,9 +32,9 @@ Antes de começar, você precisará de:
 
 Para baixar o LineageOS correto, você precisa saber qual tipo de imagem o seu celular aceita. Para isso:
 
-1. Baixe  e instale o app Treble Check (Informações sobre o Treble, em português) no celular.
+1. Baixe e instale o app Treble Check (Informações sobre o Treble, em português) no celular.
 2. Abra o aplicativo e verifique se ele mostra a mensagem "Generic System Image found!". Isso quer dizer que ele é compatível com GSI (Generic System Image).
-    > Logo abaixo dessa mensagem, vai ter algo parecido com "The type of image required is: **system-arm64-ab.img.xz**".
+   > Logo abaixo dessa mensagem, vai ter algo parecido com "The type of image required is: **system-arm64-ab.img.xz**".
 3. Clique no botão "Pesquisar imagens" (leva para essa url <https://github.com/AndyCGYan/treble_experimentations>) e escolha a imagem e versão de android que você deseja instalar. No meu caso, eu escolhi a versão **LineageOS 21 (Android 14)**.
 4. Na página de download da imagem, geralmente no site **SourceForge**, procure pelo arquivo que corresponde ao tipo de imagem que o seu celular aceita. No meu caso, baixei a imagem **"lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz"** [desse projeto](https://sourceforge.net/projects/andyyan-gsi/).
 
@@ -48,6 +48,7 @@ Para baixar o LineageOS correto, você precisa saber qual tipo de imagem o seu c
 2. SDK Plataform Tools (o famoso ADB e Fastboot): <https://developer.android.com/tools/releases/platform-tools?hl=pt-br> - Faça o download do SDK Platform-Tools para Windows
 
 Ao final, temos essa estrutura de pastas e arquivos:
+
 ```
 📂umidigi
  ┣ 📦 usb_driver_r13-windows.zip          // Driver USB do Google
@@ -66,6 +67,7 @@ Agora que já baixamos tudo que iremos utilizar, vamos organizar os arquivos no 
 4. Mova o arquivo `vbmeta.img` da firmware original do seu celular para dentro da pasta `firmware`, criada anteriormente.
 
 A estrutura de pastas e arquivos final essa, com o arquivo extraído da firmware e plataforma tools juntos e misturados:
+
 ```
 📂umidigi
  ┣ 📦 usb_driver_r13-windows.zip          // Driver USB do Google
@@ -81,8 +83,8 @@ A estrutura de pastas e arquivos final essa, com o arquivo extraído da firmware
 
 1. Vá em Configurações > Sobre o dispositivo e toque 7 vezes em Número da versão até ativar as "Opções do desenvolvedor".
 2. Em Sistema > Avançado > Opções do desenvolvedor, ative:
-    - Desbloqueio de OEM (Crucial).
-    - Depuração USB.
+   - Desbloqueio de OEM (Crucial).
+   - Depuração USB.
 3. Conecte o celular ao computador via cabo USB, vai aparecer uma mensagem perguntando se deseja autorizar o computador a depurar o celular, deixe a caixa "Sempre permitir a partir deste computador" marcada e clique em "Permitir".
 
 ### Entrar no modo Fastbootd (Diferente do Fastboot comum)
@@ -95,13 +97,13 @@ No Android 10, para mexer na partição de sistema, você precisa entrar no Fast
 4. Digite o comando `adb devices` para verificar se o celular está conectado (deve aparecer em List of devices attached).
 5. Digite o comando `adb reboot bootloader`. O celular vai reniciar em uma tela preta, escrito **FASTBOOT mode...**
 6. Vamos usar esse comando que é muito importante, para evitar loop infitino ao ligar o celular:
-    ```
-    fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
-    ```
-    > Se esse comando for inválido, digite o comando sem as flags:
-    ```
-    fastboot flash vbmeta vbmeta.img
-    ```
+   ```
+   fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
+   ```
+   > Se esse comando for inválido, digite o comando sem as flags:
+   ```
+   fastboot flash vbmeta vbmeta.img
+   ```
 7. Agora podemos entrar no modo Fastbootd com o comando `adb reboot fastboot` ou `fastboot reboot fastboot`. O celular vai reiniciar em uma tela que diz "Fastbootd" no topo (geralmente tem um menu azul/roxo).
 
 ### Instalar o LineageOS
@@ -109,31 +111,33 @@ No Android 10, para mexer na partição de sistema, você precisa entrar no Fast
 Na tela do Fastbootd, digite os seguintes comandos:
 
 1. Limpar o sistema atual:
-    ```
-    fastboot erase system
-    ```
+   ```
+   fastboot erase system
+   ```
 2. Instalar o LineageOS:
-    ```
-    fastboot flash system lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img
-    ```
-    > Se der erro de espaço insuficiente, você pode precisar deletar a partição de "product" (veja abaixo), mas tente o flash direto primeiro.
+   ```
+   fastboot flash system lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img
+   ```
+   > Se der erro de espaço insuficiente, você pode precisar deletar a partição de "product" (veja abaixo), mas tente o flash direto primeiro.
 3. Format Data (Obrigatório):
-    ```
-    fastboot -w
-    ```
-    > Esse processo pode levar vários minutos, não interrompa.
+   ```
+   fastboot -w
+   ```
+   > Esse processo pode levar vários minutos, não interrompa.
 4. Reiniciar:
-    ```
-    fastboot reboot
-    ```
-    > O primeiro boot do LineageOS pode demorar até 5 ou 10 minutos.
+   ```
+   fastboot reboot
+   ```
+   > O primeiro boot do LineageOS pode demorar até 5 ou 10 minutos.
 
 Se der erro **"FAILED (remote: 'Not enough space to resize partition')"**, use os comandos abaixo:
+
 ```
 fastboot delete-logical-partition product
 fastboot delete-logical-partition system
 fastboot create-logical-partition system 0
 ```
+
 E tente instalar o LineageOS novamente a partir do passo 2, se o erro persistir, procure uma imagem do LineageOS mais leve que seja compatível com o modelo do seu celular.
 
 ### Verificação Final

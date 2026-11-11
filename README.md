@@ -3,9 +3,11 @@
 </p>
 
 ## arianebrandao.github.io
+
 Meu site pessoal onde mostro alguns dos meus trabalhos e uso o blog para falar sobre soluções que encontrei para problemas do meu dia-a-dia com tecnologias que uso ou meus hobbies.
 
 ## App online
+
 O site está no ar no link: [arianebrandao.github.io](https://arianebrandao.github.io/), hospedado aqui, no [Github Pages](https://pages.github.com/).
 
 ## Tecnologias

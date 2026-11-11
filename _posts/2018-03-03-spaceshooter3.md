@@ -22,13 +22,12 @@ comments: false
 Esse é o primeiro jogo que criei usando a engine Godot. Eu fiz baseado numa série de tutoriais do Papai Game Maker.
 Adicionei algumas funcionalidades, por exemplo:
 
-* Tela inicial
-* Tela de Gameover
-* Display da durabilidade dos buffs
-* Buffs corrigidos
-* Mecânica de controle da nave
+- Tela inicial
+- Tela de Gameover
+- Display da durabilidade dos buffs
+- Buffs corrigidos
+- Mecânica de controle da nave
 
-
-Link do apk para android: <https://github.com/arianebrandao/SpaceShooter3/blob/master/built/spaceshooter3.apk>
+Link do apk para android: <https://raw.githubusercontent.com/arianebrandao/SpaceShooter3/master/built/spaceshooter3.apk>
 
 Link do github: <https://github.com/arianebrandao/SpaceShooter3>

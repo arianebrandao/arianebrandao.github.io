@@ -3,9 +3,9 @@ title: "[Portfólio] Guide of trip - Bootstrap"
 layout: post
 date: 2019-01-05 14:00
 tag:
-- projetos
-- portfolio
-- workana
+  - projetos
+  - portfolio
+  - workana
 image: https://arianebrandao.github.io/assets/images/posts/guideoftrip/1.png
 headerImage: true
 projects: true
@@ -21,15 +21,12 @@ Olá!
 
 Eu tive o prazer de trabalhar novamente nesse projeto, dessa vez, criando as telas para os painéis de administrador, anunciantes e clientes. Foi utilizado o framework Bootstrap 4, lembrando que nesse caso eu fiz somente o front-end.
 
-
 ### O que eu fiz
 
-* Front-end dos painéis de administrador, anunciantes e clientes
-* Página de cadastro de usuário e anunciante
-* Página de pacotes (planos)
-* Página de contato e formulário
-
-
+- Front-end dos painéis de administrador, anunciantes e clientes
+- Página de cadastro de usuário e anunciante
+- Página de pacotes (planos)
+- Página de contato e formulário
 
 <p align="center"><img data-src="{{ site.url }}/assets/images/posts/guideoftrip/3.jpg" class="lazyload" alt="Screenshot" /></p>
 <noscript>
@@ -86,6 +83,5 @@ Eu tive o prazer de trabalhar novamente nesse projeto, dessa vez, criando as tel
 </noscript>
 <figcaption class="caption">Gerenciar anunciante</figcaption>
 <div class="breaker"></div>
-
 
 Isso é tudo pessoal o/

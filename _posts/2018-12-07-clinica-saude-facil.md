@@ -3,9 +3,9 @@ title: "[Portfólio] Clínica Saúde Fácil"
 layout: post
 date: 2018-12-07 21:22
 tag:
-- projetos
-- portfolio
-- workana
+  - projetos
+  - portfolio
+  - workana
 image: https://arianebrandao.github.io/assets/images/posts/clinicasaudefacil/logo.png
 headerImage: true
 projects: true
@@ -26,17 +26,14 @@ Eu tive o prazer de trabalhar nesse projeto, através do Workana - uma das redes
 	<p align="center"><img src="{{ site.url }}/assets/images/posts/clinicasaudefacil/1.jpg" alt="Screenshot" /></p>
 </noscript>
 
-
 ### O que eu fiz
 
-* Desenvolvi o site todo :)
-* Site responsivo
-
+- Desenvolvi o site todo :)
+- Site responsivo
 
 ### Sobre o trabalho
 
 O cliente desejava um site mais simples e organizado que o seu anterior, bem otimizado e com o feed de instagram.
-
 
 <p align="center"><img data-src="{{ site.url }}/assets/images/posts/clinicasaudefacil/2.jpg" class="lazyload" alt="Screenshot" /></p>
 <noscript>
@@ -65,7 +62,6 @@ O cliente desejava um site mais simples e organizado que o seu anterior, bem oti
 </noscript>
 <figcaption class="caption">Formulário para contato e feed do instagram integrado</figcaption>
 <div class="breaker"></div>
-
 
 Isso é tudo pessoal o/  
 Site online: www.clinicasaudefacil.com.br

@@ -1,0 +1,11 @@
+# Ignore artifacts:
+build
+coverage
+_site
+.agents
+.commandcode
+node_modules
+_includes
+_layouts
+assets/css/style.min.css
+assets/js/lazysizes.min.js
